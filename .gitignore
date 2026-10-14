@@ -1,0 +1,12 @@
+# De gebouwde werkmap gaat in een GitHub-release (zip), niet in versiebeheer
+*.xlsm
+*.xlsx
+*.zip
+Release/
+
+# Excel-tijdelijke bestanden en Python
+~$*
+__pycache__/
+
+# Nooit patiëntgegevens of uitvoer van het uitleesscript
+opioidrotatie_*.txt
