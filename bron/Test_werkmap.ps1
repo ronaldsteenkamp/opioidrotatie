@@ -67,8 +67,8 @@ try {
     $Zs = $Wb.Worksheets.Item('Omzetten')
     foreach ($Doel in 'Fentanyl pleister', 'Morfine oraal', 'Hydromorfon oraal', 'Buprenorfine pleister', 'Tapentadol oraal', 'Methadon oraal', 'Fentanyl nasaal', 'Piritramide s.c./i.v.') {
         $Zs.Range('C19').Value2 = [string]$Doel; $X.Calculate()
-        "{0}: {1} {2}`n  1 sterkte : {3}`n  combinatie: {4}`n  doorbraak : {5}`n  groen     : {6}" -f $Doel, $Zs.Range('C22').Text, $Zs.Range('D22').Text, $Zs.Range('C25').Text, $Zs.Range('C26').Text, $Zs.Range('C41').Text, $(if ($Zs.Range('C26').DisplayFormat.Font.Bold) { 'combinatie' } elseif ($Zs.Range('C25').DisplayFormat.Font.Bold) { '1 sterkte' } else { '-' })
-        $W = 49..58 | ForEach-Object { $Zs.Range("B$_").Text } | Where-Object { $_ -and $_ -notlike 'Rekenhulp*' }
+        "{0}: {1} {2}`n  1 sterkte : {3}`n  combinatie: {4}`n  doorbraak : {5}`n  groen     : {6}" -f $Doel, $Zs.Range('C22').Text, $Zs.Range('D22').Text, $Zs.Range('C25').Text, $Zs.Range('C26').Text, $Zs.Range('C43').Text, $(if ($Zs.Range('C26').DisplayFormat.Font.Bold) { 'combinatie' } elseif ($Zs.Range('C25').DisplayFormat.Font.Bold) { '1 sterkte' } else { '-' })
+        $W = 51..60 | ForEach-Object { $Zs.Range("B$_").Text } | Where-Object { $_ -and $_ -notlike 'Rekenhulp*' }
         if ($W) { "  waarschuwing: " + ($W -join ' | ') }
     }
     $Zs.Range('C19').Value2 = 'Oxycodon oraal'; $Zs.Range('C20').Value2 = '3'; $Ws.Range('C10').Value2 = 'Morfine oraal'; $Ws.Range('D10').Value2 = '45'; $Ws.Range('B11:D11').ClearContents(); $X.Calculate()

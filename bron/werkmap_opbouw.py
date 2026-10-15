@@ -819,6 +819,8 @@ lines = [
          "Pallialine-pijnkaart - doorbraak 10-15% (lagere variant)."),
     ("", "• Doseercodes: Centrale doseertabel, Opbouw doseercodes (Health Base, helpkaart Pharmacom/Medicom)."),
     ("", "• Codeïne staat niet in de KNMP-rotatietabel (literatuurwaarde 1 : 10)."),
+    ("", "• Preparaten (tabblad Preparaten / Omzetten): KNMP Kennisbank, Voorschrijfproducten - producten uit de G-Standaard op "
+         "PRK-niveau (geraadpleegd 15-10-2026). Doseerfrequentie MGA standaard 2x per dag; pas aan waar nodig."),
     ("", "• Methadon (dosisafhankelijk: 10 mg = 40 mg morfine oraal bij 0-20 mg/24 u, 60 mg bij 21-50 mg, 80 mg bij > 50 mg) en "
          "fentanyl oromucosaal (200 µg = 10 mg) en nasaal (100 µg = 30 mg): Equivalentietabel opioïden, Zaans Medisch Centrum "
          "(2020), met als bronnen Pallialine (methadon), Perioperative Medicine for the Junior Clinician (oromucosaal) en het "
@@ -852,8 +854,8 @@ for i, (soort, t) in enumerate(lines):
 ps = wb.create_sheet("Preparaten")
 for col, w in zip("ABCDEFGHIJK", [2, 22, 34, 10, 10, 12, 10, 14, 18, 44, 2]):
     ps.column_dimensions[col].width = w
-kopbalk(ps, "Preparaten", "Sterktes en doseercodes voor het advies op tabblad Omzetten. Pas aan aan het eigen assortiment; "
-        "lege regels mogen gevuld worden.", "K")
+kopbalk(ps, "Preparaten", "Sterktes en doseercodes voor het advies op tabblad Omzetten. Producten volgens KNMP Kennisbank, "
+        "Voorschrijfproducten (G-Standaard, PRK-niveau; 15-10-2026). Pas aan aan het eigen assortiment.", "K")
 ps["B5"] = ("Doseercode: {f} = aantal keer per dag, {n} = aantal eenheden per keer (Centrale doseertabel, bijv. 2.1T = 2x per dag "
             "1 tablet; D31PL = per 3 dagen 1 pleister; P1CM6 = bij pijn 1 capsule, max. 6 per dag; {m} = 6 x {n}, dus max. 6 keer per dag). Keer per 24 u leeg = pleister: "
             "de dosis is dan de sterkte in µg/uur. 'Rekenen als' (doorbraak): middel waarvan de omrekenfactor gebruikt wordt.")
@@ -865,38 +867,48 @@ tabelkop(ps, 6, 2, ["Middel (omzetten naar)", "Preparaat", "Sterkte", "Eenheid",
                     "Doseercode", "Rekenen als", "Opmerking"], 30)
 O, B_ = "Onderhoud", "Doorbraak"
 prep = []
-for s in (10, 30, 60, 100, 200):
-    prep.append(("Morfine oraal", f"Morfine tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
-for s in (5, 10, 20, 40, 80):
-    prep.append(("Oxycodon oraal", f"Oxycodon tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+
+
+def nl(s):
+    return str(s).replace(".", ",")
+
+
+# Productnamen volgens KNMP Kennisbank, Voorschrijfproducten (G-Standaard, PRK-niveau), geraadpleegd 15-10-2026
+for s in (10, 15, 30, 60, 100):
+    prep.append(("Morfine oraal", f"MORFINE TABLET MGA {s}MG (SULFAAT)", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (5, 10, 15, 20, 30, 40, 60, 80, 120):
+    prep.append(("Oxycodon oraal", f"OXYCODON TABLET MGA {s}MG", s, "mg", O, 2, "{f}.{n}T", "", ""))
 for s in (4, 8, 16, 24):
-    prep.append(("Hydromorfon oraal", f"Hydromorfon capsule MGA {s} mg", s, "mg", O, 2, "{f}.{n}C", "", ""))
-for s in (12, 25, 50, 75, 100):
-    prep.append(("Fentanyl pleister", f"Fentanyl pleister {s} µg/uur", s, "µg/uur", O, None, "D3{n}PL", "",
+    prep.append(("Hydromorfon oraal", f"HYDROMORFON CAPSULE MGA {s}MG", s, "mg", O, 2, "{f}.{n}C", "", ""))
+for s in (12, 25, 37, 50, 75, 100):
+    prep.append(("Fentanyl pleister", f"FENTANYL PLEISTER {s} UG/UUR", s, "µg/uur", O, None, "D3{n}PL", "",
                  "Elke 72 uur vervangen"))
-for s in (5, 10, 20):
-    prep.append(("Buprenorfine pleister", f"Buprenorfine pleister {s} µg/uur (7 dagen)", s, "µg/uur", O, None, "1W{n}PL", "",
+for s in (5, 10, 15, 20):
+    prep.append(("Buprenorfine pleister", f"BUPRENORFINE PLEISTER {s}UG/UUR 7 DAGEN", s, "µg/uur", O, None, "1W{n}PL", "",
                  "Elke 7 dagen vervangen"))
 for s in (35, 52.5, 70):
-    prep.append(("Buprenorfine pleister", f"Buprenorfine pleister {str(s).replace('.', ',')} µg/uur (3-4 dagen)", s, "µg/uur", O,
-                 None, "{n} pleister 2x per week", "", "Twee keer per week vervangen"))
-for s in (50, 100, 150, 200):
-    prep.append(("Tramadol oraal", f"Tramadol tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+    prep.append(("Buprenorfine pleister", f"BUPRENORFINE PLEISTER {nl(s)}UG/UUR 3 DAGEN", s, "µg/uur", O, None, "D3{n}PL", "",
+                 "Elke 3 dagen vervangen"))
+for s in (35, 52.5, 70):
+    prep.append(("Buprenorfine pleister", f"BUPRENORFINE PLEISTER {nl(s)}UG/UUR 4 DAGEN", s, "µg/uur", O, None,
+                 "{n} pleister 2x per week", "", "Twee keer per week vervangen (bijv. ma en do)"))
+for s in (100, 150, 200):
+    prep.append(("Tramadol oraal", f"TRAMADOL TABLET MGA {s}MG", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (50, 100, 150):
+    prep.append(("Tramadol oraal", f"TRAMADOL CAPSULE MGA {s}MG", s, "mg", O, 2, "{f}.{n}C", "", ""))
 for s in (25, 50, 100, 150, 200, 250):
-    prep.append(("Tapentadol oraal", f"Tapentadol tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
-for s in (5, 10):
-    prep.append(("Methadon oraal", f"Methadon tablet {s} mg", s, "mg", O, 2, "{f}.{n}T", "", "Alleen in overleg met deskundige"))
-# Doorbraak: snelwerkend preparaat; bij pleisters snelwerkende morfine
-for s in (10, 20):
-    for doel in ("Morfine oraal", "Fentanyl pleister", "Buprenorfine pleister"):
-        prep.append((doel, f"Morfine tablet {s} mg (snelwerkend)", s, "mg", B_, None, "P{n}TM{m}", "Morfine oraal", ""))
+    prep.append(("Tapentadol oraal", f"TAPENTADOL TABLET MGA {s}MG", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (2, 5, 10, 20, 40, 50):
+    prep.append(("Methadon oraal", f"METHADON TABLET {s}MG", s, "mg", O, 2, "{f}.{n}T", "", "Alleen in overleg met deskundige"))
+# Doorbraak: snelwerkend preparaat; bij pleisters snelwerkende morfine. Tapentadol heeft geen snelwerkende vorm.
+for doel in ("Morfine oraal", "Fentanyl pleister", "Buprenorfine pleister"):
+    for naam, s in (("MORFINE TABLET 10MG (SULFAAT)", 10), ("MORFINE TABLET 20MG", 20)):
+        prep.append((doel, naam, s, "mg", B_, None, "P{n}TM{m}", "Morfine oraal", ""))
 for s in (5, 10, 20):
-    prep.append(("Oxycodon oraal", f"Oxycodon capsule {s} mg (snelwerkend)", s, "mg", B_, None, "P{n}CM{m}", "Oxycodon oraal", ""))
+    prep.append(("Oxycodon oraal", f"OXYCODON CAPSULE {s}MG", s, "mg", B_, None, "P{n}CM{m}", "Oxycodon oraal", ""))
 for s in (1.3, 2.6):
-    prep.append(("Hydromorfon oraal", f"Hydromorfon capsule {str(s).replace('.', ',')} mg (snelwerkend)", s, "mg", B_, None,
-                 "P{n}CM{m}", "Hydromorfon oraal", ""))
-prep.append(("Tramadol oraal", "Tramadol capsule 50 mg", 50, "mg", B_, None, "P{n}CM{m}", "Tramadol oraal", ""))
-prep.append(("Tapentadol oraal", "Tapentadol tablet 50 mg", 50, "mg", B_, None, "P{n}TM{m}", "Tapentadol oraal", ""))
+    prep.append(("Hydromorfon oraal", f"HYDROMORFON CAPSULE {nl(s)}MG", s, "mg", B_, None, "P{n}CM{m}", "Hydromorfon oraal", ""))
+prep.append(("Tramadol oraal", "TRAMADOL CAPSULE 50MG", 50, "mg", B_, None, "P{n}CM{m}", "Tramadol oraal", ""))
 prep.sort(key=lambda p: ([d[0] for d in drugs].index(p[0]), p[4] != O))
 P0, P1 = 7, 86
 dv_doel = DataValidation(type="list", formula1=NAMES, allow_blank=True)
@@ -1090,7 +1102,7 @@ Z3 = Z2 + 6                                 # 24
 zkop(Z3, 3, "Advies onderhoud")
 zlabel(Z3 + 1, "Eén sterkte")
 zlabel(Z3 + 2, "Combinatie van twee sterktes")
-L0, LN = Z3 + 4, 10                         # lijst 28..37
+L0, LN = Z3 + 4, 12                         # lijst 28..39
 tabelkop(zs, Z3 + 3, 2, ["Preparaat", "Sterkte", "Keer per 24 u", "Per keer", "Doseercode", "Dosis", "Afwijking"], 26)
 lijst(L0, LN, O)
 for k in range(LN):
@@ -1152,14 +1164,14 @@ zs.conditional_formatting.add(f"C{ZC}", FormulaRule(
     formula=[COMBI_BETER], font=Font(color=GROEN_D, bold=True), fill=cf_fill(GROEN_L)))
 
 # 4. doorbraak
-Z4 = L0 + LN + 1                            # 39
+Z4 = L0 + LN + 1                            # 41
 zkop(Z4, 4, "Doorbraakmedicatie")
 zlabel(Z4 + 1, "Doorbraakdosis per keer (als OME)", "Fractie van de dagdosis: tabblad Omrekenfactoren (KNMP 1/6), max. 4-6x per dag.")
 zwaarde(f"C{Z4 + 1}", f'=IF(N({OMET})=0,"",{OMET}*{S_BOLLO})', "0.0")
 zs[f"D{Z4 + 1}"] = "mg"
 zs[f"D{Z4 + 1}"].font = f_klein
 zlabel(Z4 + 2, "Advies doorbraak")
-B0, BN = Z4 + 4, 4                          # lijst 43..46
+B0, BN = Z4 + 4, 4                          # lijst 45..48
 tabelkop(zs, Z4 + 3, 2, ["Preparaat", "Sterkte", "Rekenen als", "Per keer", "Doseercode", "Dosis per keer", "Afwijking"], 26)
 lijst(B0, BN, B_)
 BTOME = f"$C${Z4 + 1}"
@@ -1188,7 +1200,7 @@ zs[f"C{ZD}"].alignment = links
 zs.row_dimensions[ZD].height = 26
 
 # 5. controles
-Z5 = B0 + BN + 1                            # 48
+Z5 = B0 + BN + 1                            # 50
 zkop(Z5, 5, "Controles en waarschuwingen")
 zwarns = [
     f'=IF(AND({DOEL}<>"",COUNTIF(Rotatie!C{R0}:C{R1},{DOEL})>0),"Het gekozen middel staat al in de huidige medicatie. '
