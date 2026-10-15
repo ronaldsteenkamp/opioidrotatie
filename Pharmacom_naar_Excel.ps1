@@ -4,7 +4,10 @@
 # Wordt gestart via de snelkoppeling/sneltoets, NIET vanuit Excel: op veel pc's mogen macro's
 # in Office geen PowerShell starten (beveiliging). Dit script start zelf het uitleesscript
 # en geeft het resultaat via COM aan de macro Verwerk in de werkmap.
-# Het script haalt zelf Pharmacom naar voren en drukt zo nodig F3 (medicatiestatus); daarna komt Excel naar voren.
+# Het script haalt zelf Pharmacom naar voren en drukt zo nodig F3 (medicatiestatus). Daarna haalt het de
+# nierfunctie (eGFR) uit het Diagnostisch dossier (Alt+I, Alt+D) en gaat terug naar de medicatiestatus (F3).
+# Toetsen gaan alleen naar Pharmacom als dat het actieve venster is en er geen melding openstaat.
+# Daarna komt Excel naar voren.
 #
 # Starten met 32-bit PowerShell:
 #   C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File Pharmacom_naar_Excel.ps1
@@ -38,6 +41,19 @@ function Meld($Tekst, $Icoon = 'Warning') {
 
 function Pharmacom { Get-Process javaw -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like 'Pharmacom*' } | Select-Object -First 1 }
 
+# Stuurt toetsen naar Pharmacom, alleen als het het actieve venster is en er geen melding openstaat
+function ToetsenNaarPharmacom([string[]]$Toetsen) {
+    $P = Pharmacom
+    if (-not $P -or -not [Venster]::IsWindowEnabled($P.MainWindowHandle)) { return $false }
+    if ([Venster]::VoorgrondPid() -ne $P.Id) { [void](ActiveerPharmacom $P) }
+    foreach ($K in $Toetsen) {
+        if ([Venster]::VoorgrondPid() -ne $P.Id) { return $false }
+        [System.Windows.Forms.SendKeys]::SendWait($K)
+        Start-Sleep -Milliseconds 600
+    }
+    return $true
+}
+
 # Haalt Pharmacom naar voren; true als het daarna echt het actieve venster is
 function ActiveerPharmacom($P) {
     $H = $P.MainWindowHandle
@@ -52,11 +68,12 @@ function ActiveerPharmacom($P) {
     return $false
 }
 
-# Leest de medicatiestatus (via een tijdelijk bestand dat direct weer weg gaat)
-function LeesUit {
+# Leest de medicatiestatus, of met -Lab de nierfunctie (via een tijdelijk bestand dat direct weer weg gaat)
+function LeesUit([switch]$Lab) {
     $Tmp = Join-Path $env:TEMP ("opioidrotatie_" + [guid]::NewGuid().ToString('N') + ".txt")
     $Arg = @{ Uit = $Tmp }
     if ($Proef) { $Arg.Proef = $true }
+    if ($Lab) { $Arg.Lab = $true }
     & $Lezer @Arg
     if (-not (Test-Path -LiteralPath $Tmp)) { return "" }
     $T = [IO.File]::ReadAllText($Tmp, [Text.Encoding]::UTF8)
@@ -89,6 +106,25 @@ try {
         $Tekst = LeesUit
     }
     if ($Tekst -eq "") { Meld "Het uitleesscript gaf geen antwoord."; exit 1 }
+
+    # Nierfunctie: Diagnostisch dossier (Alt+I, Alt+D), daarna terug naar de medicatiestatus (F3).
+    # De eGFR komt achter de venstertitel op de eerste regel: OK<tab>titel<tab>eGFR<tab>datum<tab>naam.
+    if ($Tekst -like 'OK*') {
+        $Nier = LeesUit -Lab
+        if ($Nier -notlike 'OK*' -and -not $Proef) {
+            if (ToetsenNaarPharmacom @('%i', '%d')) {
+                Start-Sleep -Milliseconds 800
+                $Nier = LeesUit -Lab
+                [void](ToetsenNaarPharmacom @('{F3}'))
+            }
+        }
+        $Eerste, $Rest = $Tekst -split "`n", 2
+        $Velden = $Nier.Trim() -split "`t"
+        # Alleen overnemen als het hetzelfde dossier is
+        if ($Nier -like 'OK*' -and $Velden.Count -ge 5 -and $Velden[1] -eq ($Eerste -split "`t")[1]) {
+            $Tekst = $Eerste.TrimEnd() + "`t" + $Velden[2] + "`t" + $Velden[3] + "`t" + $Velden[4] + "`n" + $Rest
+        }
+    }
 
     # 2. Excel: de open werkmap gebruiken, anders openen
     try { $Xl = [Runtime.InteropServices.Marshal]::GetActiveObject('Excel.Application') } catch { $Xl = $null }

@@ -19,6 +19,7 @@ Option Explicit
 
 Private Const R_EERST As Long = 10       ' blok 1 (zie werkmap_opbouw.py: R0..R1)
 Private Const R_LAATST As Long = 15
+Private Const CEL_EGFR As String = "D22"   ' stap 2, eGFR (zie werkmap_opbouw.py)
 Private Const KLEUR_INVOER As Long = 16777215   ' wit (invulveld)
 Private Const KLEUR_LET_OP As Long = 15069695   ' RGB(255, 241, 229), licht BENU-oranje
 
@@ -57,6 +58,7 @@ End Sub
 Public Sub WisInvoer()
     If MsgBox("Blok 1 en de uitgelezen gegevens wissen?", vbYesNo + vbQuestion, "Wis invoer") = vbNo Then Exit Sub
     WisBlok1
+    WisEgfr
     ThisWorkbook.Worksheets("Rotatie").Range("B4").Value = Plaatshouder()
 End Sub
 
@@ -76,6 +78,46 @@ Private Sub WisBlok1()
         If Not c.Comment Is Nothing Then c.Comment.Delete
     Next c
 End Sub
+
+' eGFR (stap 2) leegmaken, zodat er nooit een waarde van een vorige patient blijft staan
+Private Sub WisEgfr()
+    With ThisWorkbook.Worksheets("Rotatie").Range(CEL_EGFR)
+        .ClearContents
+        .Interior.Color = KLEUR_INVOER
+        If Not .Comment Is Nothing Then .Comment.Delete
+    End With
+End Sub
+
+' Zet de eGFR uit het Diagnostisch dossier in stap 2; geeft de regel voor de samenvatting terug.
+' Kop = eerste regel van de uitvoer: OK, titel, eGFR, datum, naam bepaling.
+Private Function VulEgfr(ws As Worksheet, Kop() As String) As String
+    WisEgfr
+    Dim W As String, Dat As String, Nm As String
+    If UBound(Kop) >= 4 Then W = Trim$(Kop(2)): Dat = Trim$(Kop(3)): Nm = Trim$(Kop(4))
+    If W = "" Then
+        VulEgfr = "Nierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend)."
+        Exit Function
+    End If
+    ' Alleen het getal (bijv. ">90" -> 90, "<15" -> 15)
+    Dim i As Long, Cijfers As String, Ch As String
+    For i = 1 To Len(W)
+        Ch = Mid$(W, i, 1)
+        If IsCijfer(Ch) Or ((Ch = "," Or Ch = ".") And Cijfers <> "") Then Cijfers = Cijfers & Ch
+    Next i
+    If Cijfers = "" Then
+        VulEgfr = "Nierfunctie: uitslag '" & W & "' (" & Dat & ") niet als getal herkend; vul de eGFR zelf in bij stap 2."
+        Exit Function
+    End If
+    Dim Rng As Range
+    Set Rng = ws.Range(CEL_EGFR)
+    Rng.Value = Getal2(Cijfers)
+    Rng.AddComment "Uit Pharmacom (Diagnostisch dossier): " & Nm & " = " & W & " op " & Dat
+    Dim Oud As Boolean
+    If IsDatum(Dat) Then Oud = DatumVan(Dat) < Date - 90
+    If Oud Or W <> Cijfers Then Rng.Interior.Color = KLEUR_LET_OP
+    VulEgfr = "Nierfunctie: " & Nm & " = " & W & " (" & Dat & ") ingevuld bij stap 2." & _
+              IIf(Oud, " Let op: ouder dan 3 maanden.", "") & IIf(W <> Cijfers, " Let op: uitslag " & W & ".", "")
+End Function
 
 ' ---------------------------------------------------------------- verwerken
 ' Verwerkt de uitvoer van het uitleesscript (ook los te testen met verzonnen regels).
@@ -122,6 +164,8 @@ Public Function Verwerk(ByVal Tekst As String, Optional ByVal Stil As Boolean = 
     End If
 
     WisBlok1
+    Dim Nier As String
+    Nier = VulEgfr(ws, Kop)
     ws.Range("B4").Value = T("Uitgelezen uit Pharmacom: ") & Titel & " (" & Format(Now, "dd-mm-yyyy hh:nn") & T(")  {->}  controleer of dit de juiste pati{e}nt is.")
 
     Dim r As Long, n As Long, Overgeslagen As String, NietIngevuld As String, Velden() As String
@@ -164,6 +208,7 @@ Volgende:
     If NietIngevuld <> "" Then Samenvatting = Samenvatting & vbLf & vbLf & "Niet automatisch ingevuld (zelf beoordelen):" & NietIngevuld
     If Overgeslagen <> "" Then Samenvatting = Samenvatting & vbLf & vbLf & "Overgeslagen:" & Overgeslagen
     If Aantal = 0 And NietIngevuld = "" Then Samenvatting = T("Geen opio{i}den gevonden in de medicatiestatus van ") & Titel & "."
+    Samenvatting = Samenvatting & vbLf & vbLf & Nier
     ws.Activate
     Verwerk = Melding(Stil, Samenvatting, vbInformation)
     Exit Function

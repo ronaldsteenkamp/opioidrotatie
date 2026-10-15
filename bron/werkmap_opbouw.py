@@ -16,7 +16,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "Opioidrotatie_basis.xlsx"
-VERSIE = "Versie 1.6 - 15-10-2026"
+VERSIE = "Versie 1.7 - 15-10-2026"
 
 # ------------------------------------------------------------------ huisstijl
 BLAUW = "002664"        # BENU royal blue
@@ -450,7 +450,7 @@ label(20, "Handmatig % van equianalgetische dosis", "Alleen gebruikt bij 'Anders
 invoer(ws["D20"], None, "0%")
 label(21, "Extra reductie (optioneel)", "Bijv. 25% bij een kwetsbare of oudere patiënt of bij sufheid. Komt bovenop de reden.")
 invoer(ws["D21"], 0, "0%")
-label(22, "eGFR (ml/min/1,73 m²)", "Optioneel. Geeft een waarschuwing bij nierfunctiestoornis.")
+label(22, "eGFR (ml/min/1,73 m²)", "Uit Pharmacom (Diagnostisch dossier) of zelf invullen. Geeft een waarschuwing bij nierfunctiestoornis.")
 invoer(ws["D22"], None, "0")
 pct = DataValidation(type="decimal", operator="between", formula1="0", formula2="1.5", allow_blank=True,
                      error="Voer een percentage in (bijv. 75%).", showErrorMessage=True)
@@ -796,6 +796,9 @@ lines = [
     ("", "Zo nodig / bij pijn: wordt als 'Doorbraak' gezet met het MAXIMUM per 24 u uit de doseercode (bijv. P1CM6 = max. 6 per dag). "
          "Verlaag dit naar het werkelijke gebruik als dat minder is; staat er geen maximum in de code, dan blijft de dosis leeg. "
          "Oranje = controleren. Niet automatisch: buprenorfine sublinguaal, onbekende codes."),
+    ("", "Nierfunctie: na de medicatiestatus opent het script het Diagnostisch dossier (Alt+I, Alt+D), neemt de nieuwste eGFR "
+         "uit Laboratorium uitslagen over in stap 2 (bij voorkeur CKD-EPI; datum in de opmerking bij de cel; oranje als ouder dan "
+         "3 maanden of een grenswaarde zoals >90) en gaat terug naar de medicatiestatus (F3). Geen eGFR gevonden: het veld blijft leeg."),
     ("", "Bovenaan staat welk dossier is uitgelezen - controleer of dit de juiste patiënt is. Pharmacom_naar_Excel.ps1 en "
          "Pharmacom_medicatiestatus.ps1 moeten in dezelfde map staan als deze werkmap."),
     ("", ""),

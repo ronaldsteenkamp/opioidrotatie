@@ -9,9 +9,12 @@
 # Met -Uit <bestand> gaat de uitvoer naar dat bestand (UTF-8) in plaats van naar het scherm;
 # het bestand verschijnt in een keer (eerst .tmp, dan hernoemd), zodat Excel kan wachten tot het er is.
 # Met -Proef wordt de koppeling wel gestart maar geen dossier gelezen (vaste, verzonnen uitvoer; voor testen).
+# Met -Lab wordt in plaats van de medicatiestatus de nierfunctie gelezen uit het Diagnostisch dossier
+# (Laboratorium uitslagen; Alt+I, Alt+D): de nieuwste eGFR (bij voorkeur CKD-EPI). Uitvoer:
+#   OK<tab>venstertitel<tab>eGFR<tab>datum<tab>naam bepaling   (of FOUT<tab>reden)
 # Gebaseerd op de koppeling van de Etiketten autoprinter (src\Jab.ahk).
 
-param([string]$Uit = "", [switch]$Proef)
+param([string]$Uit = "", [switch]$Proef, [switch]$Lab)
 
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
@@ -122,6 +125,69 @@ public static class Jab {
     return true;
   }
 
+  // ---- Nierfunctie (Diagnostisch dossier, Laboratorium uitslagen) ----
+  // Drie tabellen naast elkaar: namen (kop "Naam"), uitslagen per datum (koppen = datums, nieuwste links), normaalwaarden.
+  static readonly Regex Gfr = new Regex("e?GFR", RegexOptions.IgnoreCase);
+  static List<int> GfrRegels = new List<int>(); static List<string> GfrNamen = new List<string>();
+  static string GfrWaarde, GfrDatum, GfrNaam; static int GfrScore;
+
+  static bool WalkLab(int vm, long ac, int d) {
+    if (++teller > 6000 || d > 80) return false;
+    var b = new byte[6188]; if (getAccessibleContextInfo(vm, ac, b) == 0) return false;
+    string role = S(b, 4608), st = S(b, 5632); int ch = BitConverter.ToInt32(b, 6148);
+    if (!("," + st + ",").Contains(",showing,")) return false;
+    if (role == "table") { LabTabel(vm, ac); return false; }
+    if (role == "menu bar" || role == "popup menu" || role == "menu") return false;
+    for (int i = 0; i < Math.Min(ch, 3000); i++) {
+      long k = getAccessibleChildFromContext(vm, ac, i); if (k == 0) continue;
+      WalkLab(vm, k, d + 1); releaseJavaObject(vm, k);
+    }
+    return false;
+  }
+
+  static void LabTabel(int vm, long ac) {
+    var ti = new byte[48]; if (getAccessibleTableInfo(vm, ac, ti) == 0) return;
+    int rows = BitConverter.ToInt32(ti, 16), cols = BitConverter.ToInt32(ti, 20);
+    long at = BitConverter.ToInt64(ti, 32);
+    var koppen = new string[cols];
+    var hi = new byte[48];
+    if (getAccessibleTableColumnHeader(vm, ac, hi) != 0) {
+      long hat = BitConverter.ToInt64(hi, 32);
+      if (hat != 0) { for (int c = 0; c < cols; c++) koppen[c] = Cel(vm, hat, 0, c); releaseJavaObject(vm, hat); }
+    }
+    if (cols == 1 && koppen[0] == "Naam") {
+      GfrRegels.Clear(); GfrNamen.Clear();
+      for (int r = 0; r < Math.Min(rows, 500); r++) { string n = Cel(vm, at, r, 0); if (Gfr.IsMatch(n)) { GfrRegels.Add(r); GfrNamen.Add(n); } }
+    } else if (cols > 1 && GfrRegels.Count > 0 && Regex.IsMatch(koppen[0] ?? "", @"^\d{2}-\d{2}-\d{4}")) {
+      for (int i = 0; i < GfrRegels.Count; i++) {
+        for (int c = 0; c < cols; c++) {
+          string w = Cel(vm, at, GfrRegels[i], c);
+          if (w == "") continue;
+          // Nieuwste uitslag; bij gelijke datum CKD-EPI boven andere formules
+          DateTime dt; DateTime.TryParseExact(koppen[c] ?? "", "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+          int score = (int)(dt.Ticks / TimeSpan.TicksPerDay) * 2 + (GfrNamen[i].ToUpper().Contains("CKD") ? 1 : 0);
+          if (GfrWaarde == null || score > GfrScore) { GfrWaarde = w; GfrDatum = koppen[c]; GfrNaam = GfrNamen[i]; GfrScore = score; }
+          break;
+        }
+      }
+      GfrRegels.Clear(); GfrNamen.Clear();
+    }
+    releaseJavaObject(vm, at);
+  }
+
+  public static string LeesLab(uint pid) {
+    var hs = new List<IntPtr>();
+    EnumWindows((h, l) => { uint p; GetWindowThreadProcessId(h, out p); if (p == pid && IsWindowVisible(h)) hs.Add(h); return true; }, IntPtr.Zero);
+    GfrWaarde = null;
+    foreach (var h in hs) {
+      if (isJavaWindow(h) == 0) continue;
+      int vm; long ac; if (getAccessibleContextFromHWND(h, out vm, out ac) == 0) continue;
+      teller = 0; WalkLab(vm, ac, 0); releaseJavaObject(vm, ac);
+      if (GfrWaarde != null) { var sb = new StringBuilder(256); GetWindowText(h, sb, 256); Titel = sb.ToString(); return GfrWaarde + "\t" + GfrDatum + "\t" + GfrNaam; }
+    }
+    return null;
+  }
+
   public static string Titel = "";
   public static string Lees(uint pid) {
     var hs = new List<IntPtr>();
@@ -141,6 +207,15 @@ public static class Jab {
 # De bridge meldt zich via vensterberichten bij Java
 $t = [DateTime]::Now
 while (([DateTime]::Now - $t).TotalMilliseconds -lt 1200) { [System.Windows.Forms.Application]::DoEvents(); Start-Sleep -Milliseconds 20 }
+
+if ($Lab) {
+    if ($Proef) { Schrijf "OK`tPharmacom - Dossier - PROEF (verzonnen)`t72`t01-10-2026`tCKD-EPI, eGFR`n"; exit 0 }
+    $Res = [Jab]::LeesLab([uint32]$Proces.Id)
+    if (-not $Res) { Start-Sleep -Milliseconds 500; $Res = [Jab]::LeesLab([uint32]$Proces.Id) }
+    if (-not $Res) { Fout "Geen eGFR gevonden in het Diagnostisch dossier (Laboratorium uitslagen)" }
+    Schrijf ("OK`t" + [Jab]::Titel + "`t" + $Res + "`n")
+    exit 0
+}
 
 if ($Proef) {
     Schrijf ("OK`tPharmacom - Dossier - PROEF (verzonnen)`nSrt`tEtiketnaam`tAfl. Hoev.`tDosering`tTh. einddatum`tActief`tStartdatum`tATC`n" +

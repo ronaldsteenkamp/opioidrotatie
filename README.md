@@ -32,7 +32,8 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
   Het assortiment staat op tabblad *Preparaten* (producten volgens de KNMP Kennisbank, Voorschrijfproducten /
   G-Standaard PRK) en is aan te passen aan de eigen voorraad.
 - **Uitlezen uit Pharmacom** (optioneel): sneltoets **Ctrl+Alt+F3** vult stap 1 vanuit de
-  medicatiestatus (F3) van het open dossier.
+  medicatiestatus (F3) van het open dossier en de **eGFR** (stap 2) vanuit het Diagnostisch dossier
+  (Laboratorium uitslagen; nieuwste uitslag, bij voorkeur CKD-EPI).
 
 ## Installeren
 
@@ -73,8 +74,10 @@ Nodig: Windows 10/11 en Excel (Microsoft 365 / 2019 of nieuwer). Voor het uitlez
   `%USERPROFILE%\.accessibility.properties`) en controleert of een open Pharmacom hem al gebruikt.
   Met de hand kan het ook: in de autoprinter met **Koppeling inschakelen**, of met
   `jabswitch -enable`; daarna Pharmacom opnieuw starten.
-- Alleen lezen: het script stuurt hooguit **F3** naar Pharmacom (alleen als Pharmacom het actieve
-  venster is en er geen melding openstaat). Er wordt niets bewaard; het tijdelijke bestand wordt
+- Alleen lezen: het script stuurt hooguit **F3** (medicatiestatus) en **Alt+I, Alt+D** (Diagnostisch
+  dossier, daarna weer F3) naar Pharmacom, alleen als Pharmacom het actieve venster is en er geen
+  melding openstaat. De eGFR komt met datum in stap 2; oranje als hij ouder is dan 3 maanden of een
+  grenswaarde is (bijv. >90). Er wordt niets bewaard; het tijdelijke bestand wordt
   direct verwijderd. Bovenaan het rekenblad staat welk dossier is uitgelezen.
 - **Waarom een sneltoets en geen knop?** Op veel werkplekken mogen macro's in Office geen andere
   programma's (zoals PowerShell) starten; dat is een beveiliging tegen macrovirussen. Daarom start

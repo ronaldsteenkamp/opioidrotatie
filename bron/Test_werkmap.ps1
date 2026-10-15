@@ -36,6 +36,7 @@ try {
         "G`tHYDROMORFON CAPS 2,6MG`t20 ST`tVS`t`t`t01-10-2026`tN02AA03`n"
     $X.Run($M + 'Verwerk', $Nep, $true)
     $Ws = $Wb.Worksheets.Item('Rotatie')
+    "eGFR na uitlezen zonder nierfunctie (moet leeg): [" + $Ws.Range('D22').Text + "]"
     $X.CalculateFull()
     "B4: " + $Ws.Range('B4').Text
     foreach ($R in 10..15) {
@@ -43,13 +44,14 @@ try {
     }
     "Totaal OME: " + $Ws.Range('G16').Text + "  |  tegels: " + $Ws.Range('B33').Text + " / " + $Ws.Range('D33').Text + " / " + $Ws.Range('G33').Text + " / " + $Ws.Range('I33').Text
     "--- verwerken: methadon (staffel) en snelwerkend fentanyl"
-    $Nep2 = "OK`tPharmacom - Dossier - FICTIEVE TESTPATIENT 2`n" +
+    $Nep2 = "OK`tPharmacom - Dossier - FICTIEVE TESTPATIENT 2`t>90`t01-03-2026`tCKD-EPI, eGFR`n" +
         "Srt`tEtiketnaam`tAfl. Hoev.`tDosering`tTh. einddatum`tActief`tStartdatum`tATC`n" +
         "G`tMETHADON HCL TABLET 5MG`t30 ST`t2.2T`t`t`t01-10-2026`tN07BC02`n" +
         "G`tABSTRAL SUBLINGUALE TABLET 100MICROGRAM`t10 ST`tP1TM4`t`t`t01-10-2026`tN02AB03`n" +
         "G`tFENTANYL NEUSSPRAY 100UG/DO`t1 ST`tFENTN`t`t`t01-10-2026`tN02AB03`n"
     $X.Run($M + 'Verwerk', $Nep2, $true)
     $X.CalculateFull()
+    "eGFR (D22): " + $Ws.Range('D22').Text + " | oranje=" + ($Ws.Range('D22').Interior.Color -eq 15069695) + " | " + $Ws.Range('D22').Comment.Text()
     foreach ($R in 10..15) {
         if ($Ws.Range("C$R").Text) { "rij {0}: {1} | {2} | {3} {4} | factor {5} | OME {6} | {7} | oranje={8}" -f $R, $Ws.Range("B$R").Text, $Ws.Range("C$R").Text, $Ws.Range("D$R").Text, $Ws.Range("E$R").Text, $Ws.Range("F$R").Text, $Ws.Range("G$R").Text, $Ws.Range("H$R").Text, ($Ws.Range("I$R").Interior.Color -eq 15069695) }
     }
