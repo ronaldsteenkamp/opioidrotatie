@@ -9,7 +9,7 @@ try {
     $Wb = $X.Workbooks.Open($Pad)
     "--- doseercodes"
     foreach ($C in 'P1CM6', '2.1T', '3.2T', '23.1T', '1.23T', 'MA1T', 'M2A1T', 'MP1S', 'NP1C', 'NH1T', 'D31PL', '1W1PL',
-        'Z1M4', 'Z12M8', '13P1T', '13Z5M', '12.%M', '4.5ML', 'OD1T', '3U1T', 'ZO-1T', 'VOORB1', 'VS', '1HOE4', 'FENTN') {
+        'D41PL', 'D42PL', 'Z1M4', 'Z12M8', '13P1T', '13Z5M', '12.%M', '4.5ML', 'OD1T', '3U1T', 'ZO-1T', 'VOORB1', 'VS', '1HOE4', 'FENTN') {
         "{0,-7} -> {1}" -f $C, $X.Run($M + 'VertaalCodeTekst', $C)
     }
     "--- sterkte"

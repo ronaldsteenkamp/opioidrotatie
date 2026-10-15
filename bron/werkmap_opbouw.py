@@ -891,7 +891,7 @@ for s in (35, 52.5, 70):
                  "Elke 3 dagen vervangen"))
 for s in (35, 52.5, 70):
     prep.append(("Buprenorfine pleister", f"BUPRENORFINE PLEISTER {nl(s)}UG/UUR 4 DAGEN", s, "µg/uur", O, None,
-                 "{n} pleister 2x per week", "", "Twee keer per week vervangen (bijv. ma en do)"))
+                 "D4{n}PL", "", "Elke 4 dagen vervangen"))
 for s in (100, 150, 200):
     prep.append(("Tramadol oraal", f"TRAMADOL TABLET MGA {s}MG", s, "mg", O, 2, "{f}.{n}T", "", ""))
 for s in (50, 100, 150):
