@@ -35,14 +35,16 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
    Excel de macro's in een bestand van internet.) Pak de zip uit.
 3. Klik met rechts op `Installeer.ps1` → **Uitvoeren met PowerShell**. De rekenhulp komt in
    `Downloads\Opioidrotatie`, met op het bureaublad de snelkoppelingen **Opioidrotatie morfinepomp**
-   en **Lees opioiden uit Pharmacom** (sneltoets Ctrl+Alt+F3).
+   en **Lees opioiden uit Pharmacom** (sneltoets Ctrl+Alt+F3). De installatie controleert ook of de
+   **Java Access Bridge** (koppeling met Pharmacom) aanstaat en zet hem zo nodig aan; meldt hij dat
+   Pharmacom opnieuw gestart moet worden, sluit Pharmacom dan en open het opnieuw.
 4. Open de werkmap en klik eenmalig op **Inhoud inschakelen**.
 
 Open de werkmap niet vanaf een netwerkschijf: daar blokkeert Excel de macro's vaak. Zonder macro's
 werkt het rekenblad ook (handmatig invullen); alleen de knoppen niet.
 
 Nodig: Windows 10/11 en Excel (Microsoft 365 / 2019 of nieuwer). Voor het uitlezen: Pharmacom
-(32-bit Java) met de Java Access Bridge ingeschakeld.
+(32-bit Java) met de Java Access Bridge ingeschakeld (doet de installatie).
 
 ## Gebruik
 
@@ -60,9 +62,11 @@ Nodig: Windows 10/11 en Excel (Microsoft 365 / 2019 of nieuwer). Voor het uitlez
 ## Koppeling met Pharmacom
 
 - Het uitlezen gebeurt met de **Java Access Bridge** van Pharmacom (dezelfde koppeling als de
-  [Etiketten autoprinter](https://github.com/ronaldsteenkamp/etiketten-autoprinter)). Die moet
-  eenmalig aangezet worden: in de autoprinter met **Koppeling inschakelen**, of met
-  `jabswitch -enable` uit de Java-map van Pharmacom; daarna Pharmacom opnieuw starten.
+  [Etiketten autoprinter](https://github.com/ronaldsteenkamp/etiketten-autoprinter)). `Installeer.ps1`
+  zet hem zo nodig aan (`jabswitch -enable` uit de Java-map van Pharmacom, of anders zelf
+  `%USERPROFILE%\.accessibility.properties`) en controleert of een open Pharmacom hem al gebruikt.
+  Met de hand kan het ook: in de autoprinter met **Koppeling inschakelen**, of met
+  `jabswitch -enable`; daarna Pharmacom opnieuw starten.
 - Alleen lezen: het script stuurt hooguit **F3** naar Pharmacom (alleen als Pharmacom het actieve
   venster is en er geen melding openstaat). Er wordt niets bewaard; het tijdelijke bestand wordt
   direct verwijderd. Bovenaan het rekenblad staat welk dossier is uitgelezen.
