@@ -16,7 +16,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "Opioidrotatie_basis.xlsx"
-VERSIE = "Versie 1.7 - 15-10-2026"
+VERSIE = "Versie 1.7.1 - 15-10-2026"
 
 # ------------------------------------------------------------------ huisstijl
 BLAUW = "002664"        # BENU royal blue
@@ -492,8 +492,11 @@ det = [
     ("Nieuwe dagdosis morfine s.c./i.v.", f"=D{DET + 1}*D{DET + 2}", "0.0", "mg / 24 u"),
     ("Dosis per uur", f"=D{DET + 3}/24", "0.00", "mg / uur"),
     ("Inloopsnelheid (exact)", f"=IF(N(D26)>0,D{DET + 4}/D26,0)", "0.000", "ml / uur"),
-    ("Inloopsnelheid afgerond op pompstap", f"=IF(N(D27)>0,ROUND(D{DET + 5}/D27,0)*D27,D{DET + 5})", "0.00",
-     "ml / uur  ← instellen op de pomp"),
+    # Naar beneden afronden: de pompstand geeft nooit meer dan de berekende dosis (ROUND(..,9) vangt
+    # zwevendekommaruis op, bijv. 0,3/0,1 = 2,9999999999999996)
+    ("Inloopsnelheid op pompstap (omlaag)",
+     f"=IF(N(D27)>0,ROUNDDOWN(ROUND(D{DET + 5}/D27,9),0)*D27,D{DET + 5})", "0.00",
+     "ml / uur  ← instellen op de pomp (naar beneden afgerond)"),
     ("Werkelijke dagdosis bij afgeronde snelheid", f"=D{DET + 6}*D26*24", "0.0", "mg / 24 u"),
     ("Afwijking door afronding", f"=IF(D{DET + 3}>0,D{DET + 7}/D{DET + 3}-1,0)", "+0.0%;-0.0%;0.0%",
      "t.o.v. de berekende dagdosis"),
@@ -507,7 +510,7 @@ det = [
      "de andere sterkte uit de voorraad"),
     ("Pompstand bij andere concentratie",
      f"=IF(AND(N(D{DET + 14})>0,D{DET + 3}>0),"
-     f"IF(N(D27)>0,ROUND(D{DET + 4}/D{DET + 14}/D27,0)*D27,D{DET + 4}/D{DET + 14}),0)", "0.00",
+     f"IF(N(D27)>0,ROUNDDOWN(ROUND(D{DET + 4}/D{DET + 14}/D27,9),0)*D27,D{DET + 4}/D{DET + 14}),0)", "0.00",
      f'=IF(D{DET + 15}>0,"ml / uur  ·  afwijking "&FIXED((D{DET + 15}*D{DET + 14}*24/D{DET + 3}-1)*100,1,TRUE)'
      f'&"%  ·  looptijd "&FIXED(D28/D{DET + 15},0,TRUE)&" uur","ml / uur")'),
 ]
@@ -517,8 +520,9 @@ det = [
 # Tegels (rij 32-36)
 tegels = [
     # (kolommen, label, waarde, formaat, subtekst, hoofdtegel)
-    ("B", "C", "POMPSTAND", f'=IF(G{TR}>0,D{R_ML},"")', '0.00" ml/uur"',
-     f'=IF(G{TR}>0,"bij "&FIXED(D26,1,TRUE)&" mg/ml  ·  stap "&FIXED(D27,2,TRUE)&" ml/uur","Vul stap 1 in")', True),
+    ("B", "C", "POMPSTAND", f'=IF(G{TR}>0,IF(D{R_ML}>0,D{R_ML},"te laag"),"")', '0.00" ml/uur"',
+     f'=IF(G{TR}>0,IF(D{R_ML}>0,"bij "&FIXED(D26,1,TRUE)&" mg/ml  ·  stap "&FIXED(D27,2,TRUE)&" ml/uur",'
+     f'"dosis te laag voor deze concentratie/stap - zie stap 5"),"Vul stap 1 in")', True),
     ("D", "F", "MORFINE S.C./I.V.", f'=IF(G{TR}>0,D{R_ECHT},"")', '0.0" mg/24 u"',
      f'=IF(G{TR}>0,"= "&FIXED(D{R_ECHT}/24,2,TRUE)&" mg/uur  ·  "&TEXT(D23,"0%")&" van equianalgetisch","")', False),
     ("G", "H", "DOORBRAAKBOLUS", f'=IF(G{TR}>0,D{R_BOL},"")', '0.0" mg s.c."',
@@ -804,9 +808,9 @@ lines = [
     ("", ""),
     (H, "Rekenmethode"),
     ("", "OME (mg morfine oraal/24 u) = Σ dosis × factor  →  morfine s.c./i.v. = OME ÷ verhouding oraal : s.c. (standaard 3)  →  "
-         "× % volgens reden × (1 − extra reductie)  →  ÷ 24 = mg/uur  →  ÷ concentratie = ml/uur."),
+         "× % volgens reden × (1 − extra reductie)  →  ÷ 24 = mg/uur  →  ÷ concentratie = ml/uur  →  naar beneden afgerond op de pompstap (nooit meer dan berekend)."),
     ("", "Voorbeeld (ingevuld): oxycodon oraal 80 + 30 mg = 110 mg × 1,5 = 165 mg OME → ÷ 3 = 55 mg morfine s.c./24 u bij "
-         "onvoldoende pijnstilling (100%) = 2,29 mg/uur → bij 10 mg/ml: 0,23 ml/uur. Bij bijwerkingen (75%): 41,3 mg/24 u = 0,17 ml/uur."),
+         "onvoldoende pijnstilling (100%) = 2,29 mg/uur → bij 10 mg/ml: 0,229 → 0,22 ml/uur (stap 0,01). Bij bijwerkingen (75%): 41,3 mg/24 u = 0,17 ml/uur."),
     ("", ""),
     (H, "Kleuren"),
     ("", "Wit vlak met blauwe rand = invulveld of aanpasbare aanname.  Lichtgrijs = berekend.  Groen = belangrijkste uitkomst.  "
@@ -1169,7 +1173,8 @@ zs.conditional_formatting.add(f"C{ZC}", FormulaRule(
 # 4. doorbraak
 Z4 = L0 + LN + 1                            # 41
 zkop(Z4, 4, "Doorbraakmedicatie")
-zlabel(Z4 + 1, "Doorbraakdosis per keer (als OME)", "Fractie van de dagdosis: tabblad Omrekenfactoren (KNMP 1/6), max. 4-6x per dag.")
+zlabel(Z4 + 1, "Doorbraakdosis per keer (als OME)", "Fractie van de dagdosis: tabblad Omrekenfactoren (KNMP 1/6), max. 4-6x per dag. "
+       "Advies naar beneden afgerond op de sterkte.")
 zwaarde(f"C{Z4 + 1}", f'=IF(N({OMET})=0,"",{OMET}*{S_BOLLO})', "0.0")
 zs[f"D{Z4 + 1}"] = "mg"
 zs[f"D{Z4 + 1}"].font = f_klein
@@ -1182,7 +1187,8 @@ for k in range(BN):
     r = B0 + k
     zs[f"D{r}"] = f'=IF(K{r}="","",INDEX({PI},K{r}))'
     zs[f"L{r}"] = f'=IF(OR(K{r}="",N({BTOME})=0),"",IFERROR({BTOME}/INDEX({FACT},MATCH(D{r},{NAMES},0)),""))'
-    zs[f"E{r}"] = f'=IF(L{r}="","",ROUND(L{r}/C{r},0))'
+    # Naar beneden afronden: het doorbraakadvies komt nooit boven de berekende dosis per keer
+    zs[f"E{r}"] = f'=IF(L{r}="","",ROUNDDOWN(ROUND(L{r}/C{r},9),0))'
     zs[f"F{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"te laag",SUBSTITUTE(SUBSTITUTE(N{r},"{{n}}",E{r}),"{{m}}",6*E{r})))'
     zs[f"G{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"",E{r}*C{r}))'
     zs[f"H{r}"] = f'=IF(N(G{r})=0,"",G{r}/L{r}-1)'

@@ -1,7 +1,7 @@
 # Opioïdrotatie → morfinepomp
 
 Excel-rekenhulp voor het omzetten van het huidige opioïdgebruik naar **morfine s.c./i.v. continu
-(pomp)**: dagdosis, mg/uur, **pompstand in ml/uur** (afgerond op de pompstap), looptijd van de
+(pomp)**: dagdosis, mg/uur, **pompstand in ml/uur** (naar beneden afgerond op de pompstap, dus nooit meer dan berekend), looptijd van de
 spuit/cassette en doorbraakbolus. Omrekenfactoren volgens het **KNMP Informatorium
 Medicamentorum** (Analgetica → Opioïdrotatie). Optioneel leest hij de huidige opioïden direct uit
 het open **Pharmacom**-dossier.

@@ -1,0 +1,2067 @@
+{
+    "pomp":  [
+                 {
+                     "id":  "P01",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P02",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  0.75,
+                     "D44":  15,
+                     "D45":  0.625,
+                     "D46":  0.0625,
+                     "D47":  0.06,
+                     "D48":  14.399999999999999,
+                     "D49":  -0.040000000000000147,
+                     "D50":  1.44,
+                     "D51":  833.33333333333337,
+                     "D52":  2.4000000000000004,
+                     "D53":  1.44,
+                     "D54":  "0,24  |  0,14",
+                     "D55":  1,
+                     "D56":  0.62,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,06 ml/uur",
+                                    "14,4 mg/24 u",
+                                    "2,4 mg s.c.",
+                                    "833 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Fentanylpleister: na verwijderen wordt nog 12-24 uur fentanyl afgegeven. Start de pomp in overleg (bijv. ca. 12 uur na verwijderen of met een lagere startdosis) en zorg voor doorbraakmedicatie."
+                                        ]
+                 },
+                 {
+                     "id":  "P03",
+                     "D41":  105,
+                     "D42":  35,
+                     "D43":  1,
+                     "D44":  35,
+                     "D45":  1.4583333333333333,
+                     "D46":  0.14583333333333331,
+                     "D47":  0.14,
+                     "D48":  33.6,
+                     "D49":  -0.039999999999999925,
+                     "D50":  3.3600000000000003,
+                     "D51":  357.14285714285711,
+                     "D52":  5.6000000000000014,
+                     "D53":  3.3600000000000003,
+                     "D54":  "0,56  |  0,34",
+                     "D55":  1,
+                     "D56":  1.45,
+                     "G16":  105,
+                     "tegels":  [
+                                    "0,14 ml/uur",
+                                    "33,6 mg/24 u",
+                                    "5,6 mg s.c.",
+                                    "357 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK",
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P04",
+                     "D41":  128.8,
+                     "D42":  42.933333333333337,
+                     "D43":  1,
+                     "D44":  42.933333333333337,
+                     "D45":  1.788888888888889,
+                     "D46":  0.1788888888888889,
+                     "D47":  0.17,
+                     "D48":  40.800000000000004,
+                     "D49":  -0.0496894409937888,
+                     "D50":  4.08,
+                     "D51":  294.11764705882354,
+                     "D52":  6.8000000000000025,
+                     "D53":  4.080000000000001,
+                     "D54":  "0,68  |  0,41",
+                     "D55":  1,
+                     "D56":  1.78,
+                     "G16":  128.8,
+                     "tegels":  [
+                                    "0,17 ml/uur",
+                                    "40,8 mg/24 u",
+                                    "6,8 mg s.c.",
+                                    "294 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK",
+                                      "✓ OK",
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Fentanylpleister: na verwijderen wordt nog 12-24 uur fentanyl afgegeven. Start de pomp in overleg (bijv. ca. 12 uur na verwijderen of met een lagere startdosis) en zorg voor doorbraakmedicatie.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P05",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P06",
+                     "D41":  80,
+                     "D42":  26.666666666666668,
+                     "D43":  1,
+                     "D44":  26.666666666666668,
+                     "D45":  1.1111111111111112,
+                     "D46":  0.11111111111111112,
+                     "D47":  0.11,
+                     "D48":  26.400000000000002,
+                     "D49":  -0.010000000000000009,
+                     "D50":  2.64,
+                     "D51":  454.54545454545456,
+                     "D52":  4.4000000000000012,
+                     "D53":  2.6400000000000006,
+                     "D54":  "0,44  |  0,26",
+                     "D55":  1,
+                     "D56":  1.11,
+                     "G16":  80,
+                     "tegels":  [
+                                    "0,11 ml/uur",
+                                    "26,4 mg/24 u",
+                                    "4,4 mg s.c.",
+                                    "455 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P07",
+                     "D41":  126,
+                     "D42":  42,
+                     "D43":  1,
+                     "D44":  42,
+                     "D45":  1.75,
+                     "D46":  0.175,
+                     "D47":  0.17,
+                     "D48":  40.800000000000004,
+                     "D49":  -0.02857142857142847,
+                     "D50":  4.08,
+                     "D51":  294.11764705882354,
+                     "D52":  6.8000000000000025,
+                     "D53":  4.080000000000001,
+                     "D54":  "0,68  |  0,41",
+                     "D55":  1,
+                     "D56":  1.75,
+                     "G16":  126,
+                     "tegels":  [
+                                    "0,17 ml/uur",
+                                    "40,8 mg/24 u",
+                                    "6,8 mg s.c.",
+                                    "294 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P08",
+                     "D41":  300,
+                     "D42":  100,
+                     "D43":  1,
+                     "D44":  100,
+                     "D45":  4.166666666666667,
+                     "D46":  0.41666666666666669,
+                     "D47":  0.41000000000000003,
+                     "D48":  98.4,
+                     "D49":  -0.015999999999999903,
+                     "D50":  9.84,
+                     "D51":  121.95121951219511,
+                     "D52":  16.400000000000006,
+                     "D53":  9.8400000000000016,
+                     "D54":  "1,64  |  0,98",
+                     "D55":  1,
+                     "D56":  4.16,
+                     "G16":  300,
+                     "tegels":  [
+                                    "0,41 ml/uur",
+                                    "98,4 mg/24 u",
+                                    "16,4 mg s.c.",
+                                    "122 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Hoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder. Overweeg extra reductie, stapsgewijze rotatie en overleg met het consultatieteam palliatieve zorg of pijnteam.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P09",
+                     "D41":  408,
+                     "D42":  136,
+                     "D43":  1,
+                     "D44":  136,
+                     "D45":  5.666666666666667,
+                     "D46":  0.56666666666666665,
+                     "D47":  0.56,
+                     "D48":  134.4,
+                     "D49":  -0.0117647058823529,
+                     "D50":  13.440000000000001,
+                     "D51":  89.285714285714278,
+                     "D52":  22.400000000000006,
+                     "D53":  13.440000000000001,
+                     "D54":  "2,24  |  1,34",
+                     "D55":  1,
+                     "D56":  5.66,
+                     "G16":  408,
+                     "tegels":  [
+                                    "0,56 ml/uur",
+                                    "134,4 mg/24 u",
+                                    "22,4 mg s.c.",
+                                    "89 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Hoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder. Overweeg extra reductie, stapsgewijze rotatie en overleg met het consultatieteam palliatieve zorg of pijnteam.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P10",
+                     "D41":  123,
+                     "D42":  41,
+                     "D43":  1,
+                     "D44":  41,
+                     "D45":  1.7083333333333333,
+                     "D46":  0.17083333333333334,
+                     "D47":  0.17,
+                     "D48":  40.800000000000004,
+                     "D49":  -0.0048780487804876982,
+                     "D50":  4.08,
+                     "D51":  294.11764705882354,
+                     "D52":  6.8000000000000025,
+                     "D53":  4.080000000000001,
+                     "D54":  "0,68  |  0,41",
+                     "D55":  1,
+                     "D56":  1.7,
+                     "G16":  123,
+                     "tegels":  [
+                                    "0,17 ml/uur",
+                                    "40,8 mg/24 u",
+                                    "6,8 mg s.c.",
+                                    "294 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Dosisafhankelijke factor - overleg"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P11",
+                     "D41":  5,
+                     "D42":  1.6666666666666667,
+                     "D43":  1,
+                     "D44":  1.6666666666666667,
+                     "D45":  0.069444444444444448,
+                     "D46":  0.0069444444444444449,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  -1,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  1,
+                     "D56":  0.06,
+                     "G16":  5,
+                     "tegels":  [
+                                    "te laag",
+                                    "0,0 mg/24 u",
+                                    "0,0 mg s.c.",
+                                    "0 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 100% af bij 10,0 mg/ml. Overweeg een andere concentratie of pompstap."
+                                        ]
+                 },
+                 {
+                     "id":  "P12",
+                     "D41":  5,
+                     "D42":  1.6666666666666667,
+                     "D43":  1,
+                     "D44":  1.6666666666666667,
+                     "D45":  0.069444444444444448,
+                     "D46":  0.0069444444444444449,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  -1,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  1,
+                     "D56":  0,
+                     "G16":  5,
+                     "tegels":  [
+                                    "te laag",
+                                    "0,0 mg/24 u",
+                                    "0,0 mg s.c.",
+                                    "0 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 100% af bij 10,0 mg/ml. Overweeg een andere concentratie of pompstap."
+                                        ]
+                 },
+                 {
+                     "id":  "P13",
+                     "D41":  5,
+                     "D42":  1.6666666666666667,
+                     "D43":  1,
+                     "D44":  1.6666666666666667,
+                     "D45":  0.069444444444444448,
+                     "D46":  0.069444444444444448,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  -1,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  10,
+                     "D56":  0,
+                     "G16":  5,
+                     "tegels":  [
+                                    "te laag",
+                                    "0,0 mg/24 u",
+                                    "0,0 mg s.c.",
+                                    "0 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 100% af bij 1,0 mg/ml. Overweeg een andere concentratie of pompstap."
+                                        ]
+                 },
+                 {
+                     "id":  "P14",
+                     "D41":  2,
+                     "D42":  0.66666666666666663,
+                     "D43":  1,
+                     "D44":  0.66666666666666663,
+                     "D45":  0.027777777777777776,
+                     "D46":  0.0027777777777777775,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  -1,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  1,
+                     "D56":  0.02,
+                     "G16":  2,
+                     "tegels":  [
+                                    "te laag",
+                                    "0,0 mg/24 u",
+                                    "0,0 mg s.c.",
+                                    "0 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 100% af bij 10,0 mg/ml. Overweeg een andere concentratie of pompstap."
+                                        ]
+                 },
+                 {
+                     "id":  "P15",
+                     "D41":  1200,
+                     "D42":  400,
+                     "D43":  1,
+                     "D44":  400,
+                     "D45":  16.666666666666668,
+                     "D46":  1.6666666666666667,
+                     "D47":  1.6600000000000001,
+                     "D48":  398.40000000000003,
+                     "D49":  -0.0039999999999998925,
+                     "D50":  39.84,
+                     "D51":  12.048192771084336,
+                     "D52":  66.40000000000002,
+                     "D53":  39.84,
+                     "D54":  "6,64  |  3,98",
+                     "D55":  1,
+                     "D56":  16.66,
+                     "G16":  1200,
+                     "tegels":  [
+                                    "1,66 ml/uur",
+                                    "398,4 mg/24 u",
+                                    "66,4 mg s.c.",
+                                    "12 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Hoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder. Overweeg extra reductie, stapsgewijze rotatie en overleg met het consultatieteam palliatieve zorg of pijnteam.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "De spuit/cassette is binnen 24 uur leeg (12 uur bij 10,0 mg/ml). Overweeg 10 mg/ml of een groter volume."
+                                        ]
+                 },
+                 {
+                     "id":  "P16",
+                     "D41":  90,
+                     "D42":  30,
+                     "D43":  1,
+                     "D44":  30,
+                     "D45":  1.25,
+                     "D46":  0.125,
+                     "D47":  0.1,
+                     "D48":  24,
+                     "D49":  -0.19999999999999996,
+                     "D50":  2.4000000000000004,
+                     "D51":  500,
+                     "D52":  4.0000000000000009,
+                     "D53":  2.4000000000000004,
+                     "D54":  "0,40  |  0,24",
+                     "D55":  1,
+                     "D56":  1.2000000000000002,
+                     "G16":  90,
+                     "tegels":  [
+                                    "0,10 ml/uur",
+                                    "24,0 mg/24 u",
+                                    "4,0 mg s.c.",
+                                    "500 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 20% af bij 10,0 mg/ml. Kies 1 mg/ml: pompstand 1,20 ml/uur."
+                                        ]
+                 },
+                 {
+                     "id":  "P17",
+                     "D41":  90,
+                     "D42":  30,
+                     "D43":  1,
+                     "D44":  30,
+                     "D45":  1.25,
+                     "D46":  0.125,
+                     "D47":  0.1,
+                     "D48":  24,
+                     "D49":  -0.19999999999999996,
+                     "D50":  2.4000000000000004,
+                     "D51":  500,
+                     "D52":  4.0000000000000009,
+                     "D53":  2.4000000000000004,
+                     "D54":  "0,40  |  0,24",
+                     "D55":  1,
+                     "D56":  1.25,
+                     "G16":  90,
+                     "tegels":  [
+                                    "0,10 ml/uur",
+                                    "24,0 mg/24 u",
+                                    "4,0 mg s.c.",
+                                    "500 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "Afronding op de pompstap wijkt 20% af bij 10,0 mg/ml. Kies 1 mg/ml: pompstand 1,25 ml/uur."
+                                        ]
+                 },
+                 {
+                     "id":  "P18",
+                     "D41":  90,
+                     "D42":  30,
+                     "D43":  1,
+                     "D44":  30,
+                     "D45":  1.25,
+                     "D46":  1.25,
+                     "D47":  1.25,
+                     "D48":  30,
+                     "D49":  0,
+                     "D50":  30,
+                     "D51":  16,
+                     "D52":  5.0000000000000018,
+                     "D53":  3,
+                     "D54":  "5,00  |  3,00",
+                     "D55":  10,
+                     "D56":  0.1,
+                     "G16":  90,
+                     "tegels":  [
+                                    "1,25 ml/uur",
+                                    "30,0 mg/24 u",
+                                    "5,0 mg s.c.",
+                                    "16 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                            "De spuit/cassette is binnen 24 uur leeg (16 uur bij 1,0 mg/ml). Overweeg 10 mg/ml of een groter volume."
+                                        ]
+                 },
+                 {
+                     "id":  "P19",
+                     "D41":  90,
+                     "D42":  30,
+                     "D43":  1,
+                     "D44":  30,
+                     "D45":  1.25,
+                     "D46":  1.25,
+                     "D47":  1.2000000000000002,
+                     "D48":  28.800000000000004,
+                     "D49":  -0.039999999999999813,
+                     "D50":  28.800000000000004,
+                     "D51":  41.666666666666657,
+                     "D52":  4.8000000000000025,
+                     "D53":  2.8800000000000008,
+                     "D54":  "4,80  |  2,88",
+                     "D55":  10,
+                     "D56":  0.1,
+                     "G16":  90,
+                     "tegels":  [
+                                    "1,20 ml/uur",
+                                    "28,8 mg/24 u",
+                                    "4,8 mg s.c.",
+                                    "42 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P20",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "eGFR \u003c 30: morfine en metabolieten stapelen. Morfine is minder geschikt - overweeg een ander opioïd (bijv. fentanyl of hydromorfon) of een fors lagere dosis in overleg.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P21",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P22",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P23",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P24",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P25",
+                     "D41":  0,
+                     "D42":  0,
+                     "D43":  1,
+                     "D44":  0,
+                     "D45":  0,
+                     "D46":  0,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  0,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  1,
+                     "D56":  0,
+                     "G16":  0,
+                     "tegels":  [
+                                    "",
+                                    "",
+                                    "",
+                                    ""
+                                ],
+                     "controle":  [
+
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P26",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK",
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P27",
+                     "D41":  "#ERR:#WAARDE!",
+                     "D42":  "#ERR:#WAARDE!",
+                     "D43":  1,
+                     "D44":  "#ERR:#WAARDE!",
+                     "D45":  "#ERR:#WAARDE!",
+                     "D46":  "#ERR:#WAARDE!",
+                     "D47":  "#ERR:#WAARDE!",
+                     "D48":  "#ERR:#WAARDE!",
+                     "D49":  "#ERR:#WAARDE!",
+                     "D50":  "#ERR:#WAARDE!",
+                     "D51":  "#ERR:#WAARDE!",
+                     "D52":  "#ERR:#WAARDE!",
+                     "D53":  "#ERR:#WAARDE!",
+                     "D54":  "#ERR:#WAARDE!",
+                     "D55":  1,
+                     "D56":  "#ERR:#WAARDE!",
+                     "G16":  "#ERR:#WAARDE!",
+                     "tegels":  [
+                                    "#WAARDE!",
+                                    "#WAARDE!",
+                                    "#WAARDE!",
+                                    "#WAARDE!"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P28",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P29",
+                     "D41":  100,
+                     "D42":  33.333333333333336,
+                     "D43":  1,
+                     "D44":  33.333333333333336,
+                     "D45":  1.3888888888888891,
+                     "D46":  0.1388888888888889,
+                     "D47":  0.13,
+                     "D48":  31.200000000000003,
+                     "D49":  -0.063999999999999946,
+                     "D50":  3.12,
+                     "D51":  384.61538461538458,
+                     "D52":  5.200000000000002,
+                     "D53":  3.1200000000000006,
+                     "D54":  "0,52  |  0,31",
+                     "D55":  1,
+                     "D56":  1.3800000000000001,
+                     "G16":  100,
+                     "tegels":  [
+                                    "0,13 ml/uur",
+                                    "31,2 mg/24 u",
+                                    "5,2 mg s.c.",
+                                    "385 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Boven max. dagdosis (400)"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Een of meer doseringen liggen boven de maximale dagdosis - controleer de invoer.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P30",
+                     "D41":  240,
+                     "D42":  80,
+                     "D43":  1,
+                     "D44":  80,
+                     "D45":  3.3333333333333335,
+                     "D46":  0.33333333333333337,
+                     "D47":  0.33,
+                     "D48":  79.2,
+                     "D49":  -0.010000000000000009,
+                     "D50":  7.92,
+                     "D51":  151.5151515151515,
+                     "D52":  13.200000000000005,
+                     "D53":  7.9200000000000008,
+                     "D54":  "1,32  |  0,79",
+                     "D55":  1,
+                     "D56":  3.33,
+                     "G16":  240,
+                     "tegels":  [
+                                    "0,33 ml/uur",
+                                    "79,2 mg/24 u",
+                                    "13,2 mg s.c.",
+                                    "152 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Hoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder. Overweeg extra reductie, stapsgewijze rotatie en overleg met het consultatieteam palliatieve zorg of pijnteam.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P31",
+                     "D41":  120,
+                     "D42":  40,
+                     "D43":  0.5625,
+                     "D44":  22.5,
+                     "D45":  0.9375,
+                     "D46":  0.09375,
+                     "D47":  0.09,
+                     "D48":  21.599999999999998,
+                     "D49":  -0.040000000000000147,
+                     "D50":  2.16,
+                     "D51":  555.55555555555554,
+                     "D52":  3.6000000000000005,
+                     "D53":  2.1599999999999997,
+                     "D54":  "0,36  |  0,22",
+                     "D55":  1,
+                     "D56":  0.93,
+                     "G16":  120,
+                     "tegels":  [
+                                    "0,09 ml/uur",
+                                    "21,6 mg/24 u",
+                                    "3,6 mg s.c.",
+                                    "556 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Geen bijzonderheden gevonden."
+                                        ]
+                 },
+                 {
+                     "id":  "P32",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  0,
+                     "D44":  0,
+                     "D45":  0,
+                     "D46":  0,
+                     "D47":  0,
+                     "D48":  0,
+                     "D49":  0,
+                     "D50":  0,
+                     "D51":  0,
+                     "D52":  0,
+                     "D53":  0,
+                     "D54":  "0,00  |  0,00",
+                     "D55":  1,
+                     "D56":  0,
+                     "G16":  60,
+                     "tegels":  [
+                                    "te laag",
+                                    "0,0 mg/24 u",
+                                    "0,0 mg s.c.",
+                                    "0 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Vul bij \u0027Anders\u0027 een handmatig percentage in."
+                                        ]
+                 },
+                 {
+                     "id":  "P33",
+                     "D41":  180,
+                     "D42":  60,
+                     "D43":  1,
+                     "D44":  60,
+                     "D45":  2.5,
+                     "D46":  0.25,
+                     "D47":  0.25,
+                     "D48":  60,
+                     "D49":  0,
+                     "D50":  6,
+                     "D51":  200,
+                     "D52":  10.000000000000004,
+                     "D53":  6,
+                     "D54":  "1,00  |  0,60",
+                     "D55":  1,
+                     "D56":  2.5,
+                     "G16":  180,
+                     "tegels":  [
+                                    "0,25 ml/uur",
+                                    "60,0 mg/24 u",
+                                    "10,0 mg s.c.",
+                                    "200 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Fentanyl s.c./i.v.: de KNMP-factor parenteraal morfine : fentanyl 100 : 1 berust op beperkte gegevens. Bij 1 : 1 met de pleister zou de morfinedosis 3x lager uitkomen. Altijd overleg.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P34",
+                     "D41":  60,
+                     "D42":  20,
+                     "D43":  1,
+                     "D44":  20,
+                     "D45":  0.83333333333333337,
+                     "D46":  0.083333333333333343,
+                     "D47":  0.08,
+                     "D48":  19.200000000000003,
+                     "D49":  -0.039999999999999813,
+                     "D50":  1.92,
+                     "D51":  625,
+                     "D52":  3.2000000000000015,
+                     "D53":  1.9200000000000004,
+                     "D54":  "0,32  |  0,19",
+                     "D55":  1,
+                     "D56":  0.83000000000000007,
+                     "G16":  60,
+                     "tegels":  [
+                                    "0,08 ml/uur",
+                                    "19,2 mg/24 u",
+                                    "3,2 mg s.c.",
+                                    "625 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "Indicatieve factor - controleer"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Snelwerkend fentanyl (oromucosaal/nasaal): de omrekenfactor is indicatief (geen vaste equivalentie; wordt normaal los getitreerd). Vul het werkelijke gebruik in µg/24 u in en controleer de uitkomst.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 },
+                 {
+                     "id":  "P35",
+                     "D41":  126,
+                     "D42":  42,
+                     "D43":  1,
+                     "D44":  42,
+                     "D45":  1.75,
+                     "D46":  0.175,
+                     "D47":  0.17,
+                     "D48":  40.800000000000004,
+                     "D49":  -0.02857142857142847,
+                     "D50":  4.08,
+                     "D51":  294.11764705882354,
+                     "D52":  6.8000000000000025,
+                     "D53":  4.080000000000001,
+                     "D54":  "0,68  |  0,41",
+                     "D55":  1,
+                     "D56":  1.75,
+                     "G16":  126,
+                     "tegels":  [
+                                    "0,17 ml/uur",
+                                    "40,8 mg/24 u",
+                                    "6,8 mg s.c.",
+                                    "294 uur looptijd"
+                                ],
+                     "controle":  [
+                                      "✓ OK"
+                                  ],
+                     "waarschuwingen":  [
+                                            "Buprenorfinepleister: partiële agonist met lange werkingsduur. Plan de overgang naar morfine in overleg.",
+                                            "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                        ]
+                 }
+             ],
+    "omzet":  [
+                  {
+                      "id":  "Z01",
+                      "C14":  165,
+                      "C15":  1,
+                      "C16":  165,
+                      "C21":  68.75,
+                      "C22":  68.75,
+                      "K25":  5,
+                      "L25":  0.090909090909090828,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  2,
+                      "C42":  27.500000000000007,
+                      "C25":  "FENTANYL PLEISTER 75 UG/UUR:  D31PL   =  75 µg/uur  (+9%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "MORFINE TABLET 20MG:  P1TM6   =  20 mg per keer  (-27%)",
+                      "B51":  "Fentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.",
+                      "tabel":  [
+                                    "FENTANYL PLEISTER 12 UG/UUR | 12 | 1 | 6 | D36PL | 72,0 | +5%",
+                                    "FENTANYL PLEISTER 25 UG/UUR | 25 | 1 | 3 | D33PL | 75,0 | +9%",
+                                    "FENTANYL PLEISTER 37 UG/UUR | 37 | 1 | 2 | D32PL | 74,0 | +8%",
+                                    "FENTANYL PLEISTER 50 UG/UUR | 50 | 1 | 1 | D31PL | 50,0 | -27%",
+                                    "FENTANYL PLEISTER 75 UG/UUR | 75 | 1 | 1 | D31PL | 75,0 | +9%",
+                                    "FENTANYL PLEISTER 100 UG/UUR | 100 | 1 | 1 | D31PL | 100,0 | +45%"
+                                ]
+                  },
+                  {
+                      "id":  "Z02",
+                      "C14":  60,
+                      "C15":  0.75,
+                      "C16":  45,
+                      "C21":  25,
+                      "C22":  18.75,
+                      "K25":  1,
+                      "L25":  0.28,
+                      "P26":  "",
+                      "Q25":  2,
+                      "Q26":  2,
+                      "C42":  7.5000000000000018,
+                      "C25":  "FENTANYL PLEISTER 12 UG/UUR:  D32PL   =  24 µg/uur  (+28%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",
+                      "B51":  "Het advies wijkt meer dan 10% af van de berekende dosis - kies zelf een passende dosering.\nFentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.",
+                      "tabel":  [
+                                    "FENTANYL PLEISTER 12 UG/UUR | 12 | 1 | 2 | D32PL | 24,0 | +28%",
+                                    "FENTANYL PLEISTER 25 UG/UUR | 25 | 1 | 1 | D31PL | 25,0 | +33%",
+                                    "FENTANYL PLEISTER 37 UG/UUR | 37 | 1 | 1 | D31PL | 37,0 | +97%",
+                                    "FENTANYL PLEISTER 50 UG/UUR | 50 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 75 UG/UUR | 75 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 100 UG/UUR | 100 | 1 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z03",
+                      "C14":  60,
+                      "C15":  1,
+                      "C16":  60,
+                      "C21":  40,
+                      "C22":  40,
+                      "K25":  4,
+                      "L25":  0,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  1,
+                      "C42":  10.000000000000004,
+                      "C25":  "OXYCODON TABLET MGA 20MG:  2.1T   =  40 mg/24 u  (+0%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "OXYCODON CAPSULE 5MG:  P1CM6   =  5 mg per keer  (-25%)",
+                      "B51":  "Geen bijzonderheden.",
+                      "tabel":  [
+                                    "OXYCODON TABLET MGA 5MG | 5 | 2 | 4 | 2.4T | 40,0 | 0%",
+                                    "OXYCODON TABLET MGA 10MG | 10 | 2 | 2 | 2.2T | 40,0 | 0%",
+                                    "OXYCODON TABLET MGA 15MG | 15 | 2 | 1 | 2.1T | 30,0 | -25%",
+                                    "OXYCODON TABLET MGA 20MG | 20 | 2 | 1 | 2.1T | 40,0 | 0%",
+                                    "OXYCODON TABLET MGA 30MG | 30 | 2 | 1 | 2.1T | 60,0 | +50%",
+                                    "OXYCODON TABLET MGA 40MG | 40 | 2 | 1 | 2.1T | 80,0 | +100%",
+                                    "OXYCODON TABLET MGA 60MG | 60 | 2 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 80MG | 80 | 2 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 120MG | 120 | 2 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z04",
+                      "C14":  105,
+                      "C15":  1,
+                      "C16":  105,
+                      "C21":  21,
+                      "C22":  21,
+                      "K25":  1,
+                      "L25":  0.14285714285714279,
+                      "P26":  0.14285714285714279,
+                      "Q25":  3,
+                      "Q26":  2,
+                      "C42":  17.500000000000004,
+                      "C25":  "HYDROMORFON CAPSULE MGA 4MG:  2.3C   =  24 mg/24 u  (+14%)",
+                      "C26":  "HYDROMORFON CAPSULE MGA 8MG:  2.1C   +   HYDROMORFON CAPSULE MGA 4MG:  2.1C   =  24 mg/24 u  (+14%)",
+                      "C43":  "HYDROMORFON CAPSULE 2,6MG:  P1CM6   =  2,6 mg per keer  (-26%)",
+                      "B51":  "Het advies wijkt meer dan 10% af van de berekende dosis - kies zelf een passende dosering.",
+                      "tabel":  [
+                                    "HYDROMORFON CAPSULE MGA 4MG | 4 | 2 | 3 | 2.3C | 24,0 | +14%",
+                                    "HYDROMORFON CAPSULE MGA 8MG | 8 | 2 | 1 | 2.1C | 16,0 | -24%",
+                                    "HYDROMORFON CAPSULE MGA 16MG | 16 | 2 | 1 | 2.1C | 32,0 | +52%",
+                                    "HYDROMORFON CAPSULE MGA 24MG | 24 | 2 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z05",
+                      "C14":  60,
+                      "C15":  1,
+                      "C16":  60,
+                      "C21":  15,
+                      "C22":  15,
+                      "K25":  1,
+                      "L25":  0.066666666666666652,
+                      "P26":  -0.066666666666666652,
+                      "Q25":  4,
+                      "Q26":  2,
+                      "C42":  10.000000000000004,
+                      "C25":  "METHADON TABLET 2MG:  2.4T   =  16 mg/24 u  (+7%)",
+                      "C26":  "METHADON TABLET 5MG:  2.1T   +   METHADON TABLET 2MG:  2.1T   =  14 mg/24 u  (-7%)",
+                      "C43":  "Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",
+                      "B51":  "Methadon: alleen in overleg met een deskundige (niet-lineaire omrekening, lange en variabele halfwaardetijd, stapeling).",
+                      "tabel":  [
+                                    "METHADON TABLET 2MG | 2 | 2 | 4 | 2.4T | 16,0 | +7%",
+                                    "METHADON TABLET 5MG | 5 | 2 | 2 | 2.2T | 20,0 | +33%",
+                                    "METHADON TABLET 10MG | 10 | 2 | 1 | 2.1T | 20,0 | +33%",
+                                    "METHADON TABLET 20MG | 20 | 2 | 0 | te laag |  | ",
+                                    "METHADON TABLET 40MG | 40 | 2 | 0 | te laag |  | ",
+                                    "METHADON TABLET 50MG | 50 | 2 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z06",
+                      "C14":  100,
+                      "C15":  1,
+                      "C16":  100,
+                      "C21":  20,
+                      "C22":  20,
+                      "K25":  3,
+                      "L25":  0,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  1,
+                      "C42":  16.666666666666671,
+                      "C25":  "METHADON TABLET 10MG:  2.1T   =  20 mg/24 u  (+0%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",
+                      "B51":  "Methadon: alleen in overleg met een deskundige (niet-lineaire omrekening, lange en variabele halfwaardetijd, stapeling).",
+                      "tabel":  [
+                                    "METHADON TABLET 2MG | 2 | 2 | 5 | 2.5T | 20,0 | 0%",
+                                    "METHADON TABLET 5MG | 5 | 2 | 2 | 2.2T | 20,0 | 0%",
+                                    "METHADON TABLET 10MG | 10 | 2 | 1 | 2.1T | 20,0 | 0%",
+                                    "METHADON TABLET 20MG | 20 | 2 | 1 | 2.1T | 40,0 | +100%",
+                                    "METHADON TABLET 40MG | 40 | 2 | 0 | te laag |  | ",
+                                    "METHADON TABLET 50MG | 50 | 2 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z07",
+                      "C14":  350,
+                      "C15":  1,
+                      "C16":  350,
+                      "C21":  50,
+                      "C22":  50,
+                      "K25":  4,
+                      "L25":  -0.19999999999999996,
+                      "P26":  0,
+                      "Q25":  1,
+                      "Q26":  2,
+                      "C42":  58.33333333333335,
+                      "C25":  "METHADON TABLET 20MG:  2.1T   =  40 mg/24 u  (-20%)",
+                      "C26":  "METHADON TABLET 20MG:  2.1T   +   METHADON TABLET 5MG:  2.1T   =  50 mg/24 u  (+0%)",
+                      "C43":  "Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",
+                      "B51":  "Methadon: alleen in overleg met een deskundige (niet-lineaire omrekening, lange en variabele halfwaardetijd, stapeling).\nHoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder - overweeg extra reductie en overleg.",
+                      "tabel":  [
+                                    "METHADON TABLET 2MG | 2 | 2 | 13 | 2.13T | 52,0 | +4%",
+                                    "METHADON TABLET 5MG | 5 | 2 | 5 | 2.5T | 50,0 | 0%",
+                                    "METHADON TABLET 10MG | 10 | 2 | 3 | 2.3T | 60,0 | +20%",
+                                    "METHADON TABLET 20MG | 20 | 2 | 1 | 2.1T | 40,0 | -20%",
+                                    "METHADON TABLET 40MG | 40 | 2 | 1 | 2.1T | 80,0 | +60%",
+                                    "METHADON TABLET 50MG | 50 | 2 | 1 | 2.1T | 100,0 | +100%"
+                                ]
+                  },
+                  {
+                      "id":  "Z08",
+                      "C14":  500,
+                      "C15":  1,
+                      "C16":  500,
+                      "C21":  62.5,
+                      "C22":  62.5,
+                      "K25":  3,
+                      "L25":  -0.040000000000000036,
+                      "P26":  -0.040000000000000036,
+                      "Q25":  3,
+                      "Q26":  2,
+                      "C42":  83.333333333333357,
+                      "C25":  "METHADON TABLET 10MG:  2.3T   =  60 mg/24 u  (-4%)",
+                      "C26":  "METHADON TABLET 20MG:  2.1T   +   METHADON TABLET 10MG:  2.1T   =  60 mg/24 u  (-4%)",
+                      "C43":  "Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",
+                      "B51":  "Methadon: alleen in overleg met een deskundige (niet-lineaire omrekening, lange en variabele halfwaardetijd, stapeling).\nHoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder - overweeg extra reductie en overleg.",
+                      "tabel":  [
+                                    "METHADON TABLET 2MG | 2 | 2 | 16 | 2.16T | 64,0 | +2%",
+                                    "METHADON TABLET 5MG | 5 | 2 | 6 | 2.6T | 60,0 | -4%",
+                                    "METHADON TABLET 10MG | 10 | 2 | 3 | 2.3T | 60,0 | -4%",
+                                    "METHADON TABLET 20MG | 20 | 2 | 2 | 2.2T | 80,0 | +28%",
+                                    "METHADON TABLET 40MG | 40 | 2 | 1 | 2.1T | 80,0 | +28%",
+                                    "METHADON TABLET 50MG | 50 | 2 | 1 | 2.1T | 100,0 | +60%"
+                                ]
+                  },
+                  {
+                      "id":  "Z09",
+                      "C14":  300,
+                      "C15":  1,
+                      "C16":  300,
+                      "C21":  1500,
+                      "C22":  1500,
+                      "K25":  3,
+                      "L25":  0.066666666666666652,
+                      "P26":  0,
+                      "Q25":  4,
+                      "Q26":  4,
+                      "C42":  50.000000000000014,
+                      "C25":  "TRAMADOL TABLET MGA 200MG:  2.4T   =  1600 mg/24 u  (+7%)",
+                      "C26":  "TRAMADOL TABLET MGA 200MG:  2.3T   +   TRAMADOL TABLET MGA 150MG:  2.1T   =  1500 mg/24 u  (+0%)",
+                      "C43":  "Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",
+                      "B51":  "Nieuwe dosis boven de max. dagdosis (400 mg/24 u).\nHoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder - overweeg extra reductie en overleg.",
+                      "tabel":  [
+                                    "TRAMADOL TABLET MGA 100MG | 100 | 2 | 8 | 2.8T | 1600,0 | +7%",
+                                    "TRAMADOL TABLET MGA 150MG | 150 | 2 | 5 | 2.5T | 1500,0 | 0%",
+                                    "TRAMADOL TABLET MGA 200MG | 200 | 2 | 4 | 2.4T | 1600,0 | +7%",
+                                    "TRAMADOL CAPSULE MGA 50MG | 50 | 2 | 15 | 2.15C | 1500,0 | 0%",
+                                    "TRAMADOL CAPSULE MGA 100MG | 100 | 2 | 8 | 2.8C | 1600,0 | +7%",
+                                    "TRAMADOL CAPSULE MGA 150MG | 150 | 2 | 5 | 2.5C | 1500,0 | 0%"
+                                ]
+                  },
+                  {
+                      "id":  "Z10",
+                      "C14":  45,
+                      "C15":  1,
+                      "C16":  45,
+                      "C21":  30,
+                      "C22":  30,
+                      "K25":  2,
+                      "L25":  0,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  1,
+                      "C42":  7.5000000000000018,
+                      "C25":  "OXYCODON TABLET MGA 10MG:  3.1T   =  30 mg/24 u  (+0%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "OXYCODON CAPSULE 5MG:  P1CM6   =  5 mg per keer  (0%)",
+                      "B51":  "Geen bijzonderheden.",
+                      "tabel":  [
+                                    "OXYCODON TABLET MGA 5MG | 5 | 3 | 2 | 3.2T | 30,0 | 0%",
+                                    "OXYCODON TABLET MGA 10MG | 10 | 3 | 1 | 3.1T | 30,0 | 0%",
+                                    "OXYCODON TABLET MGA 15MG | 15 | 3 | 1 | 3.1T | 45,0 | +50%",
+                                    "OXYCODON TABLET MGA 20MG | 20 | 3 | 1 | 3.1T | 60,0 | +100%",
+                                    "OXYCODON TABLET MGA 30MG | 30 | 3 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 40MG | 40 | 3 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 60MG | 60 | 3 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 80MG | 80 | 3 | 0 | te laag |  | ",
+                                    "OXYCODON TABLET MGA 120MG | 120 | 3 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z11",
+                      "C14":  40,
+                      "C15":  0.75,
+                      "C16":  30,
+                      "C21":  16.666666666666668,
+                      "C22":  12.5,
+                      "K25":  1,
+                      "L25":  -0.040000000000000036,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  1,
+                      "C42":  5.0000000000000018,
+                      "C25":  "FENTANYL PLEISTER 12 UG/UUR:  D31PL   =  12 µg/uur  (-4%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",
+                      "B51":  "Fentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.",
+                      "tabel":  [
+                                    "FENTANYL PLEISTER 12 UG/UUR | 12 | 1 | 1 | D31PL | 12,0 | -4%",
+                                    "FENTANYL PLEISTER 25 UG/UUR | 25 | 1 | 1 | D31PL | 25,0 | +100%",
+                                    "FENTANYL PLEISTER 37 UG/UUR | 37 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 50 UG/UUR | 50 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 75 UG/UUR | 75 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 100 UG/UUR | 100 | 1 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z12",
+                      "C14":  90,
+                      "C15":  1,
+                      "C16":  90,
+                      "C21":  37.5,
+                      "C22":  37.5,
+                      "K25":  5,
+                      "L25":  -0.066666666666666652,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  1,
+                      "C42":  15.000000000000004,
+                      "C25":  "BUPRENORFINE PLEISTER 35UG/UUR 3 DAGEN:  D31PL   =  35 µg/uur  (-7%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "MORFINE TABLET 10MG (SULFAAT):  P1TM6   =  10 mg per keer  (-33%)",
+                      "B51":  "Buprenorfinepleister: partiële agonist, werking na 12-24 uur; boven 140 µg/uur niet geadviseerd. Plan de overgang in overleg.",
+                      "tabel":  [
+                                    "BUPRENORFINE PLEISTER 5UG/UUR 7 DAGEN | 5 | 1 | 8 | 1W8PL | 40,0 | +7%",
+                                    "BUPRENORFINE PLEISTER 10UG/UUR 7 DAGEN | 10 | 1 | 4 | 1W4PL | 40,0 | +7%",
+                                    "BUPRENORFINE PLEISTER 15UG/UUR 7 DAGEN | 15 | 1 | 3 | 1W3PL | 45,0 | +20%",
+                                    "BUPRENORFINE PLEISTER 20UG/UUR 7 DAGEN | 20 | 1 | 2 | 1W2PL | 40,0 | +7%",
+                                    "BUPRENORFINE PLEISTER 35UG/UUR 3 DAGEN | 35 | 1 | 1 | D31PL | 35,0 | -7%",
+                                    "BUPRENORFINE PLEISTER 52,5UG/UUR 3 DAGEN | 52,5 | 1 | 1 | D31PL | 52,5 | +40%",
+                                    "BUPRENORFINE PLEISTER 70UG/UUR 3 DAGEN | 70 | 1 | 1 | D31PL | 70,0 | +87%",
+                                    "BUPRENORFINE PLEISTER 35UG/UUR 4 DAGEN | 35 | 1 | 1 | D41PL | 35,0 | -7%",
+                                    "BUPRENORFINE PLEISTER 52,5UG/UUR 4 DAGEN | 52,5 | 1 | 1 | D41PL | 52,5 | +40%",
+                                    "BUPRENORFINE PLEISTER 70UG/UUR 4 DAGEN | 70 | 1 | 1 | D41PL | 70,0 | +87%"
+                                ]
+                  },
+                  {
+                      "id":  "Z13",
+                      "C14":  20,
+                      "C15":  1,
+                      "C16":  20,
+                      "C21":  8.3333333333333339,
+                      "C22":  8.3333333333333339,
+                      "K25":  1,
+                      "L25":  0.43999999999999995,
+                      "P26":  "",
+                      "Q25":  1,
+                      "Q26":  "",
+                      "C42":  3.3333333333333344,
+                      "C25":  "FENTANYL PLEISTER 12 UG/UUR:  D31PL   =  12 µg/uur  (+44%)",
+                      "C26":  "Niet nodig - één sterkte past.",
+                      "C43":  "Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",
+                      "B51":  "Het advies wijkt meer dan 10% af van de berekende dosis - kies zelf een passende dosering.\nFentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.",
+                      "tabel":  [
+                                    "FENTANYL PLEISTER 12 UG/UUR | 12 | 1 | 1 | D31PL | 12,0 | +44%",
+                                    "FENTANYL PLEISTER 25 UG/UUR | 25 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 37 UG/UUR | 37 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 50 UG/UUR | 50 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 75 UG/UUR | 75 | 1 | 0 | te laag |  | ",
+                                    "FENTANYL PLEISTER 100 UG/UUR | 100 | 1 | 0 | te laag |  | "
+                                ]
+                  },
+                  {
+                      "id":  "Z14",
+                      "C14":  1300.0049999999999,
+                      "C15":  1,
+                      "C16":  1300.0049999999999,
+                      "C21":  541.66874999999993,
+                      "C22":  541.66874999999993,
+                      "K25":  "",
+                      "L25":  "",
+                      "P26":  "",
+                      "Q25":  "",
+                      "Q26":  "",
+                      "C42":  216.66750000000005,
+                      "C25":  "Dosis past niet bij de beschikbare sterktes - zie de tabel hieronder.",
+                      "C26":  "",
+                      "C43":  "Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",
+                      "B51":  "Fentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.\nHoge dosis (OME ≥ 240 mg/24 u): de omrekening is onzekerder - overweeg extra reductie en overleg.",
+                      "tabel":  [
+                                    "FENTANYL PLEISTER 12 UG/UUR | 12 | 1 | 45 | D345PL | 540,0 | -0%",
+                                    "FENTANYL PLEISTER 25 UG/UUR | 25 | 1 | 22 | D322PL | 550,0 | +2%",
+                                    "FENTANYL PLEISTER 37 UG/UUR | 37 | 1 | 15 | D315PL | 555,0 | +2%",
+                                    "FENTANYL PLEISTER 50 UG/UUR | 50 | 1 | 11 | D311PL | 550,0 | +2%",
+                                    "FENTANYL PLEISTER 75 UG/UUR | 75 | 1 | 7 | D37PL | 525,0 | -3%",
+                                    "FENTANYL PLEISTER 100 UG/UUR | 100 | 1 | 5 | D35PL | 500,0 | -8%"
+                                ]
+                  }
+              ],
+    "codes":  [
+                  {
+                      "code":  "2.1T",
+                      "vba":  "2 keer per dag 1 tablet (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "3.1T",
+                      "vba":  "3 keer per dag 1 tablet (= 3/24 u) | min 3 | max 3 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "6.1T",
+                      "vba":  "6 keer per dag 1 tablet (= 6/24 u) | min 6 | max 6 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "2.2T",
+                      "vba":  "2 keer per dag 2 tablet (= 4/24 u) | min 4 | max 4 | zo nodig Onwaar | aantal 2 | vorm T"
+                  },
+                  {
+                      "code":  "3.12T",
+                      "vba":  "3 keer per dag 1 tot 2 tablet (= 3-6/24 u) | min 3 | max 6 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "2.H1T",
+                      "vba":  "2 keer per dag 0,5 tot 1 tablet (= 1-2/24 u) | min 1 | max 2 | zo nodig Onwaar | aantal 0,5 | vorm T"
+                  },
+                  {
+                      "code":  "2.1C",
+                      "vba":  "2 keer per dag 1 capsule (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 1 | vorm C"
+                  },
+                  {
+                      "code":  "2.1S",
+                      "vba":  "2 keer per dag 1 zetpil (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 1 | vorm S"
+                  },
+                  {
+                      "code":  "P1CM6",
+                      "vba":  "zo nodig/bij pijn 1 capsule, niet meer dan 6 per dag | min 0 | max 6 | zo nodig Waar | aantal 1 | vorm C"
+                  },
+                  {
+                      "code":  "P2TM6",
+                      "vba":  "zo nodig/bij pijn 2 tablet, niet meer dan 6 per dag | min 0 | max 6 | zo nodig Waar | aantal 2 | vorm T"
+                  },
+                  {
+                      "code":  "4P1TM4",
+                      "vba":  "zo nodig/bij pijn 4 keer per dag 1 tablet, niet meer dan 4 per dag | min 0 | max 4 | zo nodig Waar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "P1C",
+                      "vba":  "zo nodig/bij pijn 1 capsule | min 0 | max -1 | zo nodig Waar | aantal 1 | vorm C"
+                  },
+                  {
+                      "code":  "Z1T",
+                      "vba":  "zo nodig/bij pijn 1 tablet | min 0 | max -1 | zo nodig Waar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "3Z1T",
+                      "vba":  "zo nodig/bij pijn 3 keer per dag 1 tablet | min 0 | max 3 | zo nodig Waar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "P5MLM30",
+                      "vba":  "zo nodig/bij pijn 5 ml, niet meer dan 30 per dag | min 0 | max 30 | zo nodig Waar | aantal 5 | vorm ML"
+                  },
+                  {
+                      "code":  "2.1TM2",
+                      "vba":  "2 keer per dag 1 tablet, niet meer dan 2 per dag (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "MA1T",
+                      "vba":  "verdeeld over de dag, in totaal 2 tablet (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 2 | vorm T"
+                  },
+                  {
+                      "code":  "M1A2T",
+                      "vba":  "verdeeld over de dag, in totaal 3 tablet (= 3/24 u) | min 3 | max 3 | zo nodig Onwaar | aantal 3 | vorm T"
+                  },
+                  {
+                      "code":  "MAN1T",
+                      "vba":  "verdeeld over de dag, in totaal 3 tablet (= 3/24 u) | min 3 | max 3 | zo nodig Onwaar | aantal 3 | vorm T"
+                  },
+                  {
+                      "code":  "A1M1T",
+                      "vba":  "verdeeld over de dag, in totaal 2 tablet (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 2 | vorm T"
+                  },
+                  {
+                      "code":  "D31PL",
+                      "vba":  "1 keer per 3 dagen 1 pleister (= 0,333/24 u) | min 0,333333333333333 | max 0,333333333333333 | zo nodig Onwaar | aantal 1 | vorm PL"
+                  },
+                  {
+                      "code":  "D32PL",
+                      "vba":  "1 keer per 3 dagen 2 pleister (= 0,667/24 u) | min 0,666666666666667 | max 0,666666666666667 | zo nodig Onwaar | aantal 2 | vorm PL"
+                  },
+                  {
+                      "code":  "D41PL",
+                      "vba":  "1 keer per 4 dagen 1 pleister (= 0,25/24 u) | min 0,25 | max 0,25 | zo nodig Onwaar | aantal 1 | vorm PL"
+                  },
+                  {
+                      "code":  "1W1PL",
+                      "vba":  "1 keer per week 1 pleister (= 0,143/24 u) | min 0,142857142857143 | max 0,142857142857143 | zo nodig Onwaar | aantal 1 | vorm PL"
+                  },
+                  {
+                      "code":  "1.1PL",
+                      "vba":  "1 keer per dag 1 pleister (= 1/24 u) | min 1 | max 1 | zo nodig Onwaar | aantal 1 | vorm PL"
+                  },
+                  {
+                      "code":  "OD1T",
+                      "vba":  "1 keer per 2 dagen 1 tablet (= 0,5/24 u) | min 0,5 | max 0,5 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "ZO-1T",
+                      "vba":  "1 keer per week 1 tablet (= 0,143/24 u) | min 0,142857142857143 | max 0,142857142857143 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "4.5ML",
+                      "vba":  "4 keer per dag 5 ml (= 20/24 u) | min 20 | max 20 | zo nodig Onwaar | aantal 5 | vorm ML"
+                  },
+                  {
+                      "code":  "2D1T",
+                      "vba":  "2 keer per dag 1 tablet (= 2/24 u) | min 2 | max 2 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "3D1-2T",
+                      "vba":  "niet herkend"
+                  },
+                  {
+                      "code":  "1D1PL72U",
+                      "vba":  "niet herkend"
+                  },
+                  {
+                      "code":  "3U1T",
+                      "vba":  "3 keer per dag 1 tablet (= 3/24 u) | min 3 | max 3 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "4U1T",
+                      "vba":  "4 keer per dag 1 tablet (= 4/24 u) | min 4 | max 4 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "12.1T",
+                      "vba":  "1 tot 2 keer per dag 1 tablet (= 1-2/24 u) | min 1 | max 2 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "10.1T",
+                      "vba":  "1 keer per dag 1 tablet (= 1/24 u) | min 1 | max 0 | zo nodig Onwaar | aantal 1 | vorm T"
+                  },
+                  {
+                      "code":  "Z1M4",
+                      "vba":  "zo nodig/bij pijn 1 eenheid, niet meer dan 4 per dag | min 0 | max 4 | zo nodig Waar | aantal 1 | vorm "
+                  },
+                  {
+                      "code":  "Z12M8",
+                      "vba":  "zo nodig/bij pijn 1 tot 2 eenheid, niet meer dan 8 per dag | min 0 | max 8 | zo nodig Waar | aantal 1 | vorm "
+                  }
+              ],
+    "sterktes":  [
+                     {
+                         "naam":  "OXYCODON TABLET MGA 20MG",
+                         "atc":  "N02AA05",
+                         "vba":  "Oxycodon | oraal | Oxycodon oraal | 20 MG"
+                     },
+                     {
+                         "naam":  "OXYCODON/NALOXON TABLET MGA 10/5MG",
+                         "atc":  "N02AA55",
+                         "vba":  "Oxycodon | oraal | Oxycodon oraal | 10 MG"
+                     },
+                     {
+                         "naam":  "TARGINACT TABLET MGA 20/10MG",
+                         "atc":  "N02AA55",
+                         "vba":  "Oxycodon | oraal | Oxycodon oraal | 20 MG | meerdere sterktes in naam: controleer"
+                     },
+                     {
+                         "naam":  "MORFINE DRANK 10MG/5ML",
+                         "atc":  "N02AA01",
+                         "vba":  "Morfine | oraal | Morfine oraal | 10 MG/5ML"
+                     },
+                     {
+                         "naam":  "MORFINE HCL DRANK 2MG/ML",
+                         "atc":  "N02AA01",
+                         "vba":  "Morfine | oraal | Morfine oraal | 2 MG/ML"
+                     },
+                     {
+                         "naam":  "MORFINE INJVLST 10MG/ML",
+                         "atc":  "N02AA01",
+                         "vba":  "Morfine | parenteraal | Morfine s.c./i.v. | 10 MG/ML"
+                     },
+                     {
+                         "naam":  "MORFINE ZETPIL 10MG",
+                         "atc":  "N02AA01",
+                         "vba":  "Morfine | rectaal | Morfine oraal | 10 MG"
+                     },
+                     {
+                         "naam":  "FENTANYL PLEISTER 12UG/UUR",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | pleister | Fentanyl pleister | 12 UG/UUR"
+                     },
+                     {
+                         "naam":  "FENTANYL PLEISTER 37,5UG/UUR",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | pleister | Fentanyl pleister | 37,5 UG/UUR"
+                     },
+                     {
+                         "naam":  "FENTANYL MATRIXPLEISTER 25MICROGRAM/UUR",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | pleister | Fentanyl pleister | 25 UG/UUR"
+                     },
+                     {
+                         "naam":  "DUROGESIC 50 PLEISTER 50UG/UUR",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | pleister | Fentanyl pleister | 50 UG/UUR"
+                     },
+                     {
+                         "naam":  "FENTANYL 12 MICROGRAM/UUR PLEISTER",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | pleister | Fentanyl pleister | 12 UG/UUR"
+                     },
+                     {
+                         "naam":  "BUPRENORFINE PLEISTER 52,5UG/UUR 3 DAGEN",
+                         "atc":  "N02AE01",
+                         "vba":  "Buprenorfine | pleister | Buprenorfine pleister | 52,5 UG/UUR"
+                     },
+                     {
+                         "naam":  "TRANSTEC 35 MICROGRAM/UUR",
+                         "atc":  "N02AE01",
+                         "vba":  "Buprenorfine | oraal |  | 35 UG/UUR"
+                     },
+                     {
+                         "naam":  "BUPRENORFINE TABLET SUBLINGUAAL 0,4MG",
+                         "atc":  "N07BC01",
+                         "vba":  "Buprenorfine | transmucosaal |  | 0,4 MG"
+                     },
+                     {
+                         "naam":  "ABSTRAL TABLET SUBLINGUAAL 100MICROGRAM",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | transmucosaal | Fentanyl oromucosaal | 100 UG"
+                     },
+                     {
+                         "naam":  "INSTANYL NEUSSPRAY 50UG/DOSIS",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | nasaal | Fentanyl nasaal | 50 UG"
+                     },
+                     {
+                         "naam":  "FENTANYL SPRAY NASAAL 100UG/DOSIS",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | transmucosaal | Fentanyl oromucosaal | 100 UG"
+                     },
+                     {
+                         "naam":  "FENTANYL INJVLST 50UG/ML",
+                         "atc":  "N02AB03",
+                         "vba":  "Fentanyl | parenteraal | Fentanyl s.c./i.v. continu | 50 UG/ML"
+                     },
+                     {
+                         "naam":  "HYDROMORFON CAPSULE MGA 4MG",
+                         "atc":  "N02AA03",
+                         "vba":  "Hydromorfon | oraal | Hydromorfon oraal | 4 MG"
+                     },
+                     {
+                         "naam":  "HYDROMORFON CAPSULE MGA 4MG",
+                         "atc":  "",
+                         "vba":  "Morfine | oraal | Morfine oraal | 4 MG"
+                     },
+                     {
+                         "naam":  "PALLADON SLOW 8MG",
+                         "atc":  "",
+                         "vba":  "geen opioid"
+                     },
+                     {
+                         "naam":  "TRAMADOL/PARACETAMOL TABLET 37,5/325MG",
+                         "atc":  "N02AJ13",
+                         "vba":  "Tramadol | oraal | Tramadol oraal | 37,5 MG"
+                     },
+                     {
+                         "naam":  "PARACETAMOL/CODEINE TABLET 500/20MG",
+                         "atc":  "N02AJ06",
+                         "vba":  "Codeïne | oraal | Codeïne oraal | 20 MG"
+                     },
+                     {
+                         "naam":  "CODEINE TABLET 10MG",
+                         "atc":  "R05DA04",
+                         "vba":  "Codeïne | oraal | Codeïne oraal | 10 MG"
+                     },
+                     {
+                         "naam":  "METHADON DRANK 1MG/ML",
+                         "atc":  "N07BC02",
+                         "vba":  "Methadon | oraal | Methadon oraal | 1 MG/ML"
+                     },
+                     {
+                         "naam":  "TAPENTADOL TABLET MGA 50MG",
+                         "atc":  "N02AX06",
+                         "vba":  "Tapentadol | oraal | Tapentadol oraal | 50 MG"
+                     },
+                     {
+                         "naam":  "OXYCONTIN 10",
+                         "atc":  "N02AA05",
+                         "vba":  "Oxycodon | oraal | Oxycodon oraal | sterkte?"
+                     },
+                     {
+                         "naam":  "OXYCODON HCL INJVLST 10MG/ML",
+                         "atc":  "N02AA05",
+                         "vba":  "Oxycodon | parenteraal | Oxycodon s.c./i.v. | 10 MG/ML"
+                     },
+                     {
+                         "naam":  "MORFINE TABLET MGA 30MG",
+                         "atc":  "",
+                         "vba":  "Morfine | oraal | Morfine oraal | 30 MG"
+                     }
+                 ],
+    "verwerk":  [
+                    {
+                        "id":  "V01",
+                        "melding":  "3 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie: CKD-EPI, eGFR = 45 (01-10-2026) ingevuld bij stap 2.",
+                        "D22":  45,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Oxycodon oraal",
+                                           "dosis":  40,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "OXYCODON TABLET MGA 20MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  40 mg/24 u"
+                                       },
+                                       {
+                                           "soort":  "Doorbraak",
+                                           "middel":  "Oxycodon oraal",
+                                           "dosis":  30,
+                                           "ome":  45,
+                                           "oranje":  true,
+                                           "uitleg":  "OXYCODON CAPSULE 5MG  |  P1CM6 = zo nodig/bij pijn 1 capsule, niet meer dan 6 per dag  →  zo nodig/bij pijn: MAXIMUM ingevuld (30 mg/24 u). Verlaag naar het werkelijke gebruik als dat minder is."
+                                       },
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Fentanyl pleister",
+                                           "dosis":  12,
+                                           "ome":  28.799999999999997,
+                                           "oranje":  false,
+                                           "uitleg":  "FENTANYL PLEISTER 12UG/UUR  |  D31PL = 1 keer per 3 dagen 1 pleister (= 0,333/24 u)  →  12 µg/uur"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Fentanylpleister: na verwijderen wordt nog 12-24 uur fentanyl afgegeven. Start de pomp in overleg (bijv. ca. 12 uur na verwijderen of met een lagere startdosis) en zorg voor doorbraakmedicatie.",
+                                               "Zo nodig / bij pijn is uit Pharmacom met het MAXIMUM ingevuld. Verlaag naar het werkelijke gebruik als dat minder was; anders wordt de pompdosis te hoog.",
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V02",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  8,
+                                           "ome":  8,
+                                           "oranje":  false,
+                                           "uitleg":  "HYDROMORFON CAPSULE MGA 4MG  |  2.1C = 2 keer per dag 1 capsule (= 2/24 u)  →  8 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V03",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Doorbraak",
+                                           "middel":  "Fentanyl oromucosaal",
+                                           "dosis":  400,
+                                           "ome":  20,
+                                           "oranje":  true,
+                                           "uitleg":  "FENTANYL SPRAY NASAAL 100UG/DOSIS  |  Z1M4 = zo nodig/bij pijn 1 eenheid, niet meer dan 4 per dag  →  zo nodig/bij pijn: MAXIMUM ingevuld (400 µg/24 u). Verlaag naar het werkelijke gebruik als dat minder is."
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Snelwerkend fentanyl (oromucosaal/nasaal): de omrekenfactor is indicatief (geen vaste equivalentie; wordt normaal los getitreerd). Vul het werkelijke gebruik in µg/24 u in en controleer de uitkomst.",
+                                               "Zo nodig / bij pijn is uit Pharmacom met het MAXIMUM ingevuld. Verlaag naar het werkelijke gebruik als dat minder was; anders wordt de pompdosis te hoog.",
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren.",
+                                               "Afronding op de pompstap wijkt 28% af bij 10,0 mg/ml. Kies 1 mg/ml: pompstand 0,27 ml/uur."
+                                           ]
+                    },
+                    {
+                        "id":  "V04",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  40,
+                                           "ome":  40,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE TABLET 10MG  |  4U1T = 4 keer per dag 1 tablet (= 4/24 u)  →  40 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V05",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Oxycodon oraal",
+                                           "dosis":  40,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "OXYCODON TABLET MGA 20MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  40 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V06",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie: CKD-EPI, eGFR = \u003c15 (01-10-2026) ingevuld bij stap 2. Let op: uitslag \u003c15.",
+                        "D22":  15,
+                        "D22_oranje":  true,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  60,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE TABLET MGA 30MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  60 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "eGFR \u003c 30: morfine en metabolieten stapelen. Morfine is minder geschikt - overweeg een ander opioïd (bijv. fentanyl of hydromorfon) of een fors lagere dosis in overleg.",
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V07",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie: CKD-EPI, eGFR = 45 (CKD-EPI 2009) (01-10-2026) ingevuld bij stap 2. Let op: uitslag 45 (CKD-EPI 2009).",
+                        "D22":  452009,
+                        "D22_oranje":  true,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  60,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE TABLET MGA 30MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  60 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V08",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie: CKD-EPI, eGFR = 25 (01-10-26) ingevuld bij stap 2.",
+                        "D22":  25,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  60,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE TABLET MGA 30MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  60 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "eGFR \u003c 30: morfine en metabolieten stapelen. Morfine is minder geschikt - overweeg een ander opioïd (bijv. fentanyl of hydromorfon) of een fors lagere dosis in overleg.",
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V09",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie: CKD-EPI, eGFR = 29,5 (01-10-2026) ingevuld bij stap 2.",
+                        "D22":  29.5,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  60,
+                                           "ome":  60,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE TABLET MGA 30MG  |  2.1T = 2 keer per dag 1 tablet (= 2/24 u)  →  60 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "eGFR \u003c 30: morfine en metabolieten stapelen. Morfine is minder geschikt - overweeg een ander opioïd (bijv. fentanyl of hydromorfon) of een fors lagere dosis in overleg.",
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V10",
+                        "melding":  "1 opioïdregel(s) ingevuld uit Dossier - FICTIEVE TESTPATIENT.\nControleer de kolom \u0027Uitgelezen uit Pharmacom\u0027 (oranje = nakijken / aanvullen).\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+                                       {
+                                           "soort":  "Onderhoud",
+                                           "middel":  "Morfine oraal",
+                                           "dosis":  40,
+                                           "ome":  40,
+                                           "oranje":  false,
+                                           "uitleg":  "MORFINE DRANK 2MG  |  4.5ML = 4 keer per dag 5 ml (= 20/24 u)  →  40 mg/24 u"
+                                       }
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    },
+                    {
+                        "id":  "V11",
+                        "melding":  "Geen opioïden gevonden in de medicatiestatus van Dossier - FICTIEVE TESTPATIENT.\n\nNierfunctie (eGFR) niet gevonden in het Diagnostisch dossier: vul die zelf in bij stap 2 (als bekend).",
+                        "D22":  null,
+                        "D22_oranje":  false,
+                        "regels":  [
+
+                                   ],
+                        "waarschuwingen":  [
+                                               "Volledige equianalgetische dosis (geen reductie). Evalueer effect en bijwerkingen na enkele uren."
+                                           ]
+                    }
+                ],
+    "extra":  {
+                  "preparaten_leeg":  {
+                                          "C25":  "Geen preparaten voor dit middel op tabblad Preparaten.",
+                                          "C26":  "",
+                                          "C43":  "Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",
+                                          "B51":  "Geen bijzonderheden."
+                                      },
+                  "eigen_code_volgens_tabblad":  " (eigen tabel) | min 3 | max 3 | zo nodig Onwaar | aantal 3 | vorm ",
+                  "voorbeeld_VOORB1":  "Voorbeeld (fictieve code, mag weg): 2 eenheden per 24 u, vast gebruik (eigen tabel) | min 2 | max 2 | zo nodig Onwaar | aantal 2 | vorm ",
+                  "eigen_code_in_kolom_A":  "niet herkend"
+              }
+}

@@ -677,14 +677,15 @@ Private Function Omschrijving(D As Dosering, ByVal Fmin As Double, ByVal Fmax As
     Omschrijving = S
 End Function
 
-' Code op tabblad Doseercodes (A7:E56)
+' Code op tabblad Doseercodes: kolom B (rij 9-58), daarna C = eenheden per 24 u, D = zo nodig,
+' E = max. per 24 u, F = omschrijving (zie werkmap_opbouw.py, tabblad Doseercodes)
 Private Function EigenCode(ByVal C As String, ByRef D As Dosering) As Boolean
     Dim Rij As Range, ws As Worksheet
     On Error Resume Next
     Set ws = ThisWorkbook.Worksheets("Doseercodes")
     On Error GoTo 0
     If ws Is Nothing Then Exit Function
-    For Each Rij In ws.Range("A7:A56").Cells
+    For Each Rij In ws.Range("B9:B58").Cells
         If UCase$(Replace(Trim$(CStr(Rij.Value)), " ", "")) = C And C <> "" Then
             D.Herkend = True
             D.ZoNodig = (UCase$(Trim$(CStr(Rij.Offset(0, 2).Value))) = "J")

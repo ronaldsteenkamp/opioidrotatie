@@ -1,0 +1,1131 @@
+{
+ "pomp": [
+  {
+   "id": "P01",
+   "oms": "60 mg morfine oraal, onvoldoende effect",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P02",
+   "oms": "fentanylpleister 25 µg/uur, bijwerkingen (75%)",
+   "regels": [
+    [
+     "Fentanyl pleister",
+     25
+    ]
+   ],
+   "reden": "Bijwerkingen",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P03",
+   "oms": "oxycodon 2x20 mg + oxycodon zo nodig P1CM6 5 mg (max 6 = 30 mg)",
+   "regels": [
+    [
+     "Oxycodon oraal",
+     40
+    ],
+    [
+     "Oxycodon oraal",
+     30
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P04",
+   "oms": "combinatie morfine 60 + tramadol 200 + fentanylpleister 12",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ],
+    [
+     "Tramadol oraal",
+     200
+    ],
+    [
+     "Fentanyl pleister",
+     12
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P05",
+   "oms": "methadon 15 mg",
+   "regels": [
+    [
+     "Methadon oraal",
+     15
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P06",
+   "oms": "methadon 20 mg",
+   "regels": [
+    [
+     "Methadon oraal",
+     20
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P07",
+   "oms": "methadon 21 mg",
+   "regels": [
+    [
+     "Methadon oraal",
+     21
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P08",
+   "oms": "methadon 50 mg",
+   "regels": [
+    [
+     "Methadon oraal",
+     50
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P09",
+   "oms": "methadon 51 mg",
+   "regels": [
+    [
+     "Methadon oraal",
+     51
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P10",
+   "oms": "methadon 20,5 mg (tussen de treden)",
+   "regels": [
+    [
+     "Methadon oraal",
+     20.5
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P11",
+   "oms": "zeer laag: 5 mg morfine oraal, 10 mg/ml, stap 0,01",
+   "regels": [
+    [
+     "Morfine oraal",
+     5
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P12",
+   "oms": "zeer laag: 5 mg morfine oraal, 10 mg/ml, stap 0,1",
+   "regels": [
+    [
+     "Morfine oraal",
+     5
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.1,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P13",
+   "oms": "zeer laag: 5 mg morfine oraal, 1 mg/ml, stap 0,1",
+   "regels": [
+    [
+     "Morfine oraal",
+     5
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 1,
+   "stap": 0.1,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P14",
+   "oms": "zeer laag: 2 mg morfine oraal (afronding naar 0)",
+   "regels": [
+    [
+     "Morfine oraal",
+     2
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P15",
+   "oms": "zeer hoog: oxycodon 800 mg (1200 OME), spuit 20 ml",
+   "regels": [
+    [
+     "Oxycodon oraal",
+     800
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 20,
+   "handmatig": null
+  },
+  {
+   "id": "P16",
+   "oms": "morfine 90 mg, 10 mg/ml, stap 0,1",
+   "regels": [
+    [
+     "Morfine oraal",
+     90
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.1,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P17",
+   "oms": "morfine 90 mg, 10 mg/ml, stap 0,05 (precies op de helft)",
+   "regels": [
+    [
+     "Morfine oraal",
+     90
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.05,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P18",
+   "oms": "morfine 90 mg, 1 mg/ml, stap 0,05, spuit 20",
+   "regels": [
+    [
+     "Morfine oraal",
+     90
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 1,
+   "stap": 0.05,
+   "volume": 20,
+   "handmatig": null
+  },
+  {
+   "id": "P19",
+   "oms": "morfine 90 mg, 1 mg/ml, stap 0,1, spuit 50",
+   "regels": [
+    [
+     "Morfine oraal",
+     90
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 1,
+   "stap": 0.1,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P20",
+   "oms": "eGFR 29",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": 29,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P21",
+   "oms": "eGFR 30",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": 30,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P22",
+   "oms": "eGFR ontbrekend",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P23",
+   "oms": "eGFR '>90' (tekst, handmatig)",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": ">90",
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P24",
+   "oms": "eGFR '<15' (tekst, handmatig getypt)",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": "<15",
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P25",
+   "oms": "lege invoer",
+   "regels": [],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P26",
+   "oms": "negatieve dosis (geplakt, langs de validatie)",
+   "regels": [
+    [
+     "Morfine oraal",
+     120
+    ],
+    [
+     "Oxycodon oraal",
+     -40
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P27",
+   "oms": "tekst in getalveld '60 mg'",
+   "regels": [
+    [
+     "Morfine oraal",
+     "60 mg"
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P28",
+   "oms": "getal als tekst '60' (geplakt)",
+   "regels": [
+    [
+     "Morfine oraal",
+     "60"
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P29",
+   "oms": "tramadol 500 mg (boven max 400)",
+   "regels": [
+    [
+     "Tramadol oraal",
+     500
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P30",
+   "oms": "hoge dosis precies 240 OME",
+   "regels": [
+    [
+     "Morfine oraal",
+     240
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P31",
+   "oms": "bijwerkingen + extra reductie 25%",
+   "regels": [
+    [
+     "Morfine oraal",
+     120
+    ]
+   ],
+   "reden": "Bijwerkingen",
+   "extra": 0.25,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P32",
+   "oms": "Anders (handmatig %) zonder percentage",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Anders (handmatig %)",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P33",
+   "oms": "fentanyl s.c./i.v. 25 µg/uur",
+   "regels": [
+    [
+     "Fentanyl s.c./i.v. continu",
+     25
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P34",
+   "oms": "fentanyl oromucosaal 1200 µg/24 u",
+   "regels": [
+    [
+     "Fentanyl oromucosaal",
+     1200
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  },
+  {
+   "id": "P35",
+   "oms": "buprenorfinepleister 52,5 µg/uur",
+   "regels": [
+    [
+     "Buprenorfine pleister",
+     52.5
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "extra": 0.0,
+   "egfr": null,
+   "conc": 10,
+   "stap": 0.01,
+   "volume": 50,
+   "handmatig": null
+  }
+ ],
+ "omzet": [
+  {
+   "id": "Z01",
+   "oms": "165 OME (oxy 80+30) -> fentanylpleister",
+   "regels": [
+    [
+     "Oxycodon oraal",
+     80
+    ],
+    [
+     "Oxycodon oraal",
+     30
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Fentanyl pleister",
+   "freq": null
+  },
+  {
+   "id": "Z02",
+   "oms": "60 OME, bijwerkingen (45) -> fentanylpleister",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Bijwerkingen",
+   "doel": "Fentanyl pleister",
+   "freq": null
+  },
+  {
+   "id": "Z03",
+   "oms": "60 OME -> oxycodon oraal",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Oxycodon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z04",
+   "oms": "105 OME -> hydromorfon oraal",
+   "regels": [
+    [
+     "Oxycodon oraal",
+     70
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Hydromorfon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z05",
+   "oms": "60 OME -> methadon",
+   "regels": [
+    [
+     "Morfine oraal",
+     60
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Methadon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z06",
+   "oms": "100 OME -> methadon (gat in staffel)",
+   "regels": [
+    [
+     "Morfine oraal",
+     100
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Methadon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z07",
+   "oms": "350 OME -> methadon (gat in staffel)",
+   "regels": [
+    [
+     "Morfine oraal",
+     350
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Methadon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z08",
+   "oms": "500 OME -> methadon",
+   "regels": [
+    [
+     "Morfine oraal",
+     500
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Methadon oraal",
+   "freq": null
+  },
+  {
+   "id": "Z09",
+   "oms": "300 OME -> tramadol (boven max)",
+   "regels": [
+    [
+     "Morfine oraal",
+     300
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Tramadol oraal",
+   "freq": null
+  },
+  {
+   "id": "Z10",
+   "oms": "45 mg morfine -> oxycodon 3x per dag",
+   "regels": [
+    [
+     "Morfine oraal",
+     45
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Oxycodon oraal",
+   "freq": 3
+  },
+  {
+   "id": "Z11",
+   "oms": "40 OME bijwerkingen (30) -> fentanylpleister",
+   "regels": [
+    [
+     "Morfine oraal",
+     40
+    ]
+   ],
+   "reden": "Bijwerkingen",
+   "doel": "Fentanyl pleister",
+   "freq": null
+  },
+  {
+   "id": "Z12",
+   "oms": "90 OME -> buprenorfinepleister",
+   "regels": [
+    [
+     "Morfine oraal",
+     90
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Buprenorfine pleister",
+   "freq": null
+  },
+  {
+   "id": "Z13",
+   "oms": "20 OME -> fentanylpleister (lager dan kleinste)",
+   "regels": [
+    [
+     "Morfine oraal",
+     20
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Fentanyl pleister",
+   "freq": null
+  },
+  {
+   "id": "Z14",
+   "oms": "1300 OME -> fentanylpleister (zeer hoog)",
+   "regels": [
+    [
+     "Oxycodon oraal",
+     866.67
+    ]
+   ],
+   "reden": "Onvoldoende pijnstilling",
+   "doel": "Fentanyl pleister",
+   "freq": null
+  }
+ ],
+ "codes": [
+  "2.1T",
+  "3.1T",
+  "6.1T",
+  "2.2T",
+  "3.12T",
+  "2.H1T",
+  "2.1C",
+  "2.1S",
+  "P1CM6",
+  "P2TM6",
+  "4P1TM4",
+  "P1C",
+  "Z1T",
+  "3Z1T",
+  "P5MLM30",
+  "2.1TM2",
+  "MA1T",
+  "M1A2T",
+  "MAN1T",
+  "A1M1T",
+  "D31PL",
+  "D32PL",
+  "D41PL",
+  "1W1PL",
+  "1.1PL",
+  "OD1T",
+  "ZO-1T",
+  "4.5ML",
+  "2D1T",
+  "3D1-2T",
+  "1D1PL72U",
+  "3U1T",
+  "4U1T",
+  "12.1T",
+  "10.1T",
+  "Z1M4",
+  "Z12M8"
+ ],
+ "verwerk": [
+  {
+   "id": "V01",
+   "oms": "normaal: oxycodon MGA 20 2.1T + capsule 5 P1CM6 + fentanyl 12 D31PL",
+   "egfr": [
+    "45",
+    "01-10-2026"
+   ],
+   "regels": [
+    [
+     "OXYCODON TABLET MGA 20MG",
+     "2.1T",
+     "N02AA05",
+     ""
+    ],
+    [
+     "OXYCODON CAPSULE 5MG",
+     "P1CM6",
+     "N02AA05",
+     ""
+    ],
+    [
+     "FENTANYL PLEISTER 12UG/UUR",
+     "D31PL",
+     "N02AB03",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V02",
+   "oms": "hydromorfon zonder ATC",
+   "egfr": null,
+   "regels": [
+    [
+     "HYDROMORFON CAPSULE MGA 4MG",
+     "2.1C",
+     "",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V03",
+   "oms": "fentanylspray 'NASAAL'",
+   "egfr": null,
+   "regels": [
+    [
+     "FENTANYL SPRAY NASAAL 100UG/DOSIS",
+     "Z1M4",
+     "N02AB03",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V04",
+   "oms": "code met U (elke 4 uur?)",
+   "egfr": null,
+   "regels": [
+    [
+     "MORFINE TABLET 10MG",
+     "4U1T",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V05",
+   "oms": "einddatum met 2-cijferig jaar (31-12-30)",
+   "egfr": null,
+   "regels": [
+    [
+     "OXYCODON TABLET MGA 20MG",
+     "2.1T",
+     "N02AA05",
+     "31-12-30"
+    ]
+   ]
+  },
+  {
+   "id": "V06",
+   "oms": "eGFR '<15'",
+   "egfr": [
+    "<15",
+    "01-10-2026"
+   ],
+   "regels": [
+    [
+     "MORFINE TABLET MGA 30MG",
+     "2.1T",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V07",
+   "oms": "eGFR met tekst erachter",
+   "egfr": [
+    "45 (CKD-EPI 2009)",
+    "01-10-2026"
+   ],
+   "regels": [
+    [
+     "MORFINE TABLET MGA 30MG",
+     "2.1T",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V08",
+   "oms": "eGFR-datum met 2-cijferig jaar",
+   "egfr": [
+    "25",
+    "01-10-26"
+   ],
+   "regels": [
+    [
+     "MORFINE TABLET MGA 30MG",
+     "2.1T",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V09",
+   "oms": "eGFR decimaal '29,5'",
+   "egfr": [
+    "29,5",
+    "01-10-2026"
+   ],
+   "regels": [
+    [
+     "MORFINE TABLET MGA 30MG",
+     "2.1T",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V10",
+   "oms": "drank zonder /ML in de naam",
+   "egfr": null,
+   "regels": [
+    [
+     "MORFINE DRANK 2MG",
+     "4.5ML",
+     "N02AA01",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "V11",
+   "oms": "merknaam zonder ATC",
+   "egfr": null,
+   "regels": [
+    [
+     "PALLADON SLOW 8MG",
+     "2.1C",
+     "",
+     ""
+    ]
+   ]
+  }
+ ],
+ "sterktes": [
+  [
+   "OXYCODON TABLET MGA 20MG",
+   "N02AA05"
+  ],
+  [
+   "OXYCODON/NALOXON TABLET MGA 10/5MG",
+   "N02AA55"
+  ],
+  [
+   "TARGINACT TABLET MGA 20/10MG",
+   "N02AA55"
+  ],
+  [
+   "MORFINE DRANK 10MG/5ML",
+   "N02AA01"
+  ],
+  [
+   "MORFINE HCL DRANK 2MG/ML",
+   "N02AA01"
+  ],
+  [
+   "MORFINE INJVLST 10MG/ML",
+   "N02AA01"
+  ],
+  [
+   "MORFINE ZETPIL 10MG",
+   "N02AA01"
+  ],
+  [
+   "FENTANYL PLEISTER 12UG/UUR",
+   "N02AB03"
+  ],
+  [
+   "FENTANYL PLEISTER 37,5UG/UUR",
+   "N02AB03"
+  ],
+  [
+   "FENTANYL MATRIXPLEISTER 25MICROGRAM/UUR",
+   "N02AB03"
+  ],
+  [
+   "DUROGESIC 50 PLEISTER 50UG/UUR",
+   "N02AB03"
+  ],
+  [
+   "FENTANYL 12 MICROGRAM/UUR PLEISTER",
+   "N02AB03"
+  ],
+  [
+   "BUPRENORFINE PLEISTER 52,5UG/UUR 3 DAGEN",
+   "N02AE01"
+  ],
+  [
+   "TRANSTEC 35 MICROGRAM/UUR",
+   "N02AE01"
+  ],
+  [
+   "BUPRENORFINE TABLET SUBLINGUAAL 0,4MG",
+   "N07BC01"
+  ],
+  [
+   "ABSTRAL TABLET SUBLINGUAAL 100MICROGRAM",
+   "N02AB03"
+  ],
+  [
+   "INSTANYL NEUSSPRAY 50UG/DOSIS",
+   "N02AB03"
+  ],
+  [
+   "FENTANYL SPRAY NASAAL 100UG/DOSIS",
+   "N02AB03"
+  ],
+  [
+   "FENTANYL INJVLST 50UG/ML",
+   "N02AB03"
+  ],
+  [
+   "HYDROMORFON CAPSULE MGA 4MG",
+   "N02AA03"
+  ],
+  [
+   "HYDROMORFON CAPSULE MGA 4MG",
+   ""
+  ],
+  [
+   "PALLADON SLOW 8MG",
+   ""
+  ],
+  [
+   "TRAMADOL/PARACETAMOL TABLET 37,5/325MG",
+   "N02AJ13"
+  ],
+  [
+   "PARACETAMOL/CODEINE TABLET 500/20MG",
+   "N02AJ06"
+  ],
+  [
+   "CODEINE TABLET 10MG",
+   "R05DA04"
+  ],
+  [
+   "METHADON DRANK 1MG/ML",
+   "N07BC02"
+  ],
+  [
+   "TAPENTADOL TABLET MGA 50MG",
+   "N02AX06"
+  ],
+  [
+   "OXYCONTIN 10",
+   "N02AA05"
+  ],
+  [
+   "OXYCODON HCL INJVLST 10MG/ML",
+   "N02AA05"
+  ],
+  [
+   "MORFINE TABLET MGA 30MG",
+   ""
+  ]
+ ]
+}

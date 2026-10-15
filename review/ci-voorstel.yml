@@ -1,0 +1,55 @@
+# VOORSTEL - niet actief. Om te gebruiken: kopiëren naar .github/workflows/review.yml.
+#
+# Job 1 (Linux, elke push/PR): referentie, parser-port en layoutcontrole (VBA-constanten tegen
+#   werkmap_opbouw.py). Tests die werkmap_uitkomsten.json nodig hebben, vergelijken met de
+#   in de repo vastgelegde uitkomsten van de laatste Excel-run.
+# Job 2 (Windows met Excel, self-hosted: GitHub-runners hebben geen Office): bouwt de echte .xlsm,
+#   draait excel_harness.ps1 en daarna dezelfde pytest tegen de verse uitkomsten.
+#   Vereist op de runner: Excel + "Toegang tot het objectmodel van het VBA-project vertrouwen",
+#   Python 3 met openpyxl en pytest.
+name: review-tests
+
+on:
+  push:
+    paths: ["bron/**", "review/**", "*.ps1"]
+  pull_request:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install openpyxl pytest
+      - name: pytest (referentie, parser-port, layout)
+        working-directory: review
+        run: python -m pytest -q -rx
+      # Optioneel: formules laten herberekenen door LibreOffice (geen VBA) als extra controle
+      # - run: sudo apt-get install -y libreoffice-calc
+      # - run: python -I bron/werkmap_opbouw.py /tmp/basis.xlsx && soffice --headless --convert-to xlsx --outdir /tmp/lo /tmp/basis.xlsx
+
+  windows-excel:
+    runs-on: [self-hosted, windows, excel]
+    needs: linux
+    steps:
+      - uses: actions/checkout@v4
+      - name: bouwen
+        shell: powershell
+        run: powershell -ExecutionPolicy Bypass -File bron\Bouw_werkmap.ps1
+      - name: casussen door de echte werkmap
+        shell: powershell
+        run: |
+          cd review
+          python -X utf8 casussen.py
+          powershell -ExecutionPolicy Bypass -File excel_harness.ps1
+      - name: pytest tegen verse Excel-uitkomsten
+        shell: powershell
+        run: |
+          cd review
+          python -X utf8 -m pytest -q -rx
+      - uses: actions/upload-artifact@v4
+        with:
+          name: werkmap_uitkomsten
+          path: review/werkmap_uitkomsten.json
