@@ -16,7 +16,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "Opioidrotatie_basis.xlsx"
-VERSIE = "Versie 1.5 - 15-10-2026"
+VERSIE = "Versie 1.6 - 15-10-2026"
 
 # ------------------------------------------------------------------ huisstijl
 BLAUW = "002664"        # BENU royal blue
@@ -274,6 +274,12 @@ M_F1, M_F2, M_F3 = (f"Omrekenfactoren!$E${M0 + 1 + i}" for i in range(3))
 def methadon_factor(d):
     """Excel-formule (zonder '=') voor de methadonfactor bij dosis d (mg/24 u)."""
     return f"IF({d}<={M_TM1},{M_F1},IF({d}<={M_TM2},{M_F2},{M_F3}))"
+
+
+def methadon_dosis(ome):
+    """Excel-formule (zonder '='): methadondosis bij OME (staffel omgekeerd; tussen twee stappen de lagere dosis)."""
+    return (f"IF({ome}<={M_TM1}*{M_F1},{ome}/{M_F1},IF({ome}<={M_TM2}*{M_F2},MAX({M_TM1},{ome}/{M_F2}),"
+            f"MAX({M_TM2},{ome}/{M_F3})))")
 
 fs.freeze_panes = "A4"
 fs.page_setup.orientation = "landscape"
@@ -690,9 +696,7 @@ for i, ome in enumerate([30, 60, 90, 120, 180, 240, 300, 360, 480, 600]):
     invoer(qs.cell(row=r, column=2), ome)
     for j, n in enumerate(cols):
         if n == "Methadon oraal":
-            # Staffel omgekeerd; tussen twee stappen de lagere methadondosis (voorzichtige kant)
-            v = (f"=IF($B{r}<={M_TM1}*{M_F1},$B{r}/{M_F1},IF($B{r}<={M_TM2}*{M_F2},MAX({M_TM1},$B{r}/{M_F2}),"
-                 f"MAX({M_TM2},$B{r}/{M_F3})))")
+            v = "=" + methadon_dosis(f"$B{r}")
         else:
             v = f'=$B{r}/INDEX({FACT},MATCH("{n}",{NAMES},0))'
         c = qs.cell(row=r, column=3 + j, value=v)
@@ -779,6 +783,10 @@ lines = [
          "spuit die binnen 24 uur leeg is, stelt de rekenhulp de andere concentratie voor."),
     ("", "4.  Lees de pompstand, dagdosis, doorbraakbolus en looptijd af in de tegels; de berekening staat eronder."),
     ("", "5.  Lees altijd de controles en waarschuwingen. Gebruik daarna 'Wis invoer' en sla het bestand niet op met patiëntgegevens."),
+    ("", "Omzetten naar een ander opioïd (bijv. oraal of pleister in plaats van de pomp): tabblad Omzetten. Kies het nieuwe middel; "
+         "de rekenhulp neemt de OME en het percentage uit stap 1 en 2 over, rekent de nieuwe dosis uit en kiest uit tabblad "
+         "Preparaten de best passende sterkte (of combinatie van twee sterktes) met doseercode, plus doorbraakmedicatie "
+         "(1/6 van de dagdosis). Het assortiment op tabblad Preparaten is aan te passen aan de eigen voorraad."),
     ("", ""),
     (H, "Uitlezen uit Pharmacom"),
     ("", "Op veel computers mag Excel zelf geen programma's starten (beveiliging tegen macrovirussen). Daarom start het uitlezen "
@@ -838,8 +846,395 @@ for i, (soort, t) in enumerate(lines):
         ts.row_dimensions[r].height = 16 * regels + 4 if t else 8
     c.alignment = Alignment(wrap_text=True, vertical="center", indent=1)
 
-# Volgorde tabbladen: Rotatie, Omrekenfactoren, Doseercodes, Omrekentabel, Toelichting
-wb._sheets = [ws, fs, ds, qs, ts]
+# ================================================================== Preparaten
+# Assortiment per middel: welke sterktes er zijn en hoe ze gedoseerd worden. Tabblad Omzetten
+# kiest hieruit het preparaat en de doseercode. Aan te passen aan het eigen assortiment.
+ps = wb.create_sheet("Preparaten")
+for col, w in zip("ABCDEFGHIJK", [2, 22, 34, 10, 10, 12, 10, 14, 18, 44, 2]):
+    ps.column_dimensions[col].width = w
+kopbalk(ps, "Preparaten", "Sterktes en doseercodes voor het advies op tabblad Omzetten. Pas aan aan het eigen assortiment; "
+        "lege regels mogen gevuld worden.", "K")
+ps["B5"] = ("Doseercode: {f} = aantal keer per dag, {n} = aantal eenheden per keer (Centrale doseertabel, bijv. 2.1T = 2x per dag "
+            "1 tablet; D31PL = per 3 dagen 1 pleister; P1CM6 = bij pijn 1 capsule, max. 6 per dag; {m} = 6 x {n}, dus max. 6 keer per dag). Keer per 24 u leeg = pleister: "
+            "de dosis is dan de sterkte in µg/uur. 'Rekenen als' (doorbraak): middel waarvan de omrekenfactor gebruikt wordt.")
+ps["B5"].font = font(9, GRIJS)
+ps["B5"].alignment = boven
+ps.merge_cells("B5:J5")
+ps.row_dimensions[5].height = 44
+tabelkop(ps, 6, 2, ["Middel (omzetten naar)", "Preparaat", "Sterkte", "Eenheid", "Gebruik", "Keer per 24 u",
+                    "Doseercode", "Rekenen als", "Opmerking"], 30)
+O, B_ = "Onderhoud", "Doorbraak"
+prep = []
+for s in (10, 30, 60, 100, 200):
+    prep.append(("Morfine oraal", f"Morfine tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (5, 10, 20, 40, 80):
+    prep.append(("Oxycodon oraal", f"Oxycodon tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (4, 8, 16, 24):
+    prep.append(("Hydromorfon oraal", f"Hydromorfon capsule MGA {s} mg", s, "mg", O, 2, "{f}.{n}C", "", ""))
+for s in (12, 25, 50, 75, 100):
+    prep.append(("Fentanyl pleister", f"Fentanyl pleister {s} µg/uur", s, "µg/uur", O, None, "D3{n}PL", "",
+                 "Elke 72 uur vervangen"))
+for s in (5, 10, 20):
+    prep.append(("Buprenorfine pleister", f"Buprenorfine pleister {s} µg/uur (7 dagen)", s, "µg/uur", O, None, "1W{n}PL", "",
+                 "Elke 7 dagen vervangen"))
+for s in (35, 52.5, 70):
+    prep.append(("Buprenorfine pleister", f"Buprenorfine pleister {str(s).replace('.', ',')} µg/uur (3-4 dagen)", s, "µg/uur", O,
+                 None, "{n} pleister 2x per week", "", "Twee keer per week vervangen"))
+for s in (50, 100, 150, 200):
+    prep.append(("Tramadol oraal", f"Tramadol tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (25, 50, 100, 150, 200, 250):
+    prep.append(("Tapentadol oraal", f"Tapentadol tablet MGA {s} mg", s, "mg", O, 2, "{f}.{n}T", "", ""))
+for s in (5, 10):
+    prep.append(("Methadon oraal", f"Methadon tablet {s} mg", s, "mg", O, 2, "{f}.{n}T", "", "Alleen in overleg met deskundige"))
+# Doorbraak: snelwerkend preparaat; bij pleisters snelwerkende morfine
+for s in (10, 20):
+    for doel in ("Morfine oraal", "Fentanyl pleister", "Buprenorfine pleister"):
+        prep.append((doel, f"Morfine tablet {s} mg (snelwerkend)", s, "mg", B_, None, "P{n}TM{m}", "Morfine oraal", ""))
+for s in (5, 10, 20):
+    prep.append(("Oxycodon oraal", f"Oxycodon capsule {s} mg (snelwerkend)", s, "mg", B_, None, "P{n}CM{m}", "Oxycodon oraal", ""))
+for s in (1.3, 2.6):
+    prep.append(("Hydromorfon oraal", f"Hydromorfon capsule {str(s).replace('.', ',')} mg (snelwerkend)", s, "mg", B_, None,
+                 "P{n}CM{m}", "Hydromorfon oraal", ""))
+prep.append(("Tramadol oraal", "Tramadol capsule 50 mg", 50, "mg", B_, None, "P{n}CM{m}", "Tramadol oraal", ""))
+prep.append(("Tapentadol oraal", "Tapentadol tablet 50 mg", 50, "mg", B_, None, "P{n}TM{m}", "Tapentadol oraal", ""))
+prep.sort(key=lambda p: ([d[0] for d in drugs].index(p[0]), p[4] != O))
+P0, P1 = 7, 86
+dv_doel = DataValidation(type="list", formula1=NAMES, allow_blank=True)
+dv_gebruik = DataValidation(type="list", formula1=f'"{O},{B_}"', allow_blank=True)
+dv_als = DataValidation(type="list", formula1=NAMES, allow_blank=True)
+for v in (dv_doel, dv_gebruik, dv_als):
+    ps.add_data_validation(v)
+for i, r in enumerate(range(P0, P1 + 1)):
+    rij = prep[i] if i < len(prep) else (None,) * 9
+    for j, v in enumerate(rij):
+        c = ps.cell(row=r, column=2 + j)
+        invoer(c, v)
+        c.alignment = links if j in (0, 1, 6, 7, 8) else Alignment(horizontal="center", vertical="center")
+    ps.cell(row=r, column=4).number_format = "General"
+    ps.row_dimensions[r].height = 20
+dv_doel.add(f"B{P0}:B{P1}")
+dv_gebruik.add(f"F{P0}:F{P1}")
+dv_als.add(f"I{P0}:I{P1}")
+ps.freeze_panes = f"A{P0}"
+ps.sheet_properties.tabColor = GROEN
+ps.page_setup.orientation = "landscape"
+ps.page_setup.fitToWidth = 1
+ps.page_setup.fitToHeight = 0
+ps.sheet_properties.pageSetUpPr.fitToPage = True
+
+
+def prep_kol(k):
+    return f"Preparaten!${k}${P0}:${k}${P1}"
+
+
+PB, PC, PD, PF, PG, PH, PI = (prep_kol(k) for k in "BCDFGHI")
+
+
+def getal(x):
+    """Excel-formule (zonder '='): getal als tekst met 0-2 decimalen, landinstelling-onafhankelijk."""
+    return f"IF(ROUND({x},0)={x},FIXED({x},0,TRUE),IF(ROUND({x},1)={x},FIXED({x},1,TRUE),FIXED({x},2,TRUE)))"
+
+
+def procent(x):
+    return f'IF({x}>=0,"+","")&FIXED({x}*100,0,TRUE)&"%"'
+
+
+# ================================================================== Omzetten
+zs = wb.create_sheet("Omzetten")
+for col, w in zip("ABCDEFGHIJ", [2, 40, 13, 12, 11, 14, 14, 12, 40, 2]):
+    zs.column_dimensions[col].width = w
+for col in "KLMNOPQ":
+    zs.column_dimensions[col].hidden = True
+kopbalk(zs, "Omzetten naar ander opioïd", "Equivalente dosis, preparaat en doseercode op basis van de huidige medicatie "
+        "(tabblad Rotatie, stap 1 en 2) en het assortiment op tabblad Preparaten.", "J")
+zs.sheet_view.showRowColHeaders = False
+zs.sheet_properties.tabColor = GROEN
+zs.merge_cells("B4:I4")
+zs["B4"] = "=Rotatie!B4"
+zs["B4"].font = Font(name=FS, size=10, color=GROEN_D)
+zs["B4"].alignment = Alignment(horizontal="left", vertical="center", indent=1)
+for c in "BCDEFGHI":
+    zs[f"{c}4"].fill = fill(GROEN_L)
+zs.row_dimensions[4].height = 26
+
+
+def zkop(r, nummer, titel):
+    c = zs[f"B{r}"]
+    c.value = f"{nummer}   {titel}"
+    c.font = Font(name=FS, size=13, color=BLAUW)
+    c.alignment = Alignment(vertical="center", indent=1)
+    for k in "BCDEFGHI":
+        zs[f"{k}{r}"].border = Border(bottom=side(GROEN, "medium"))
+    zs.row_dimensions[r].height = 28
+
+
+def zlabel(r, tekst, noot=None):
+    zs[f"B{r}"] = tekst
+    zs[f"B{r}"].font = f_label
+    zs[f"B{r}"].alignment = links
+    if noot:
+        zs[f"E{r}"] = noot
+        zs[f"E{r}"].font = f_klein
+        zs[f"E{r}"].alignment = links
+        zs.merge_cells(f"E{r}:I{r}")
+    zs.row_dimensions[r].height = 22
+
+
+def zwaarde(ref, formule, fmt="@", sterk=False):
+    c = zs[ref]
+    c.value = formule
+    c.number_format = fmt
+    c.font = f_sterk if sterk else f_waarde
+    c.fill = fill(LICHT)
+    c.alignment = rechts
+
+
+# 1. huidige medicatie (uit tabblad Rotatie)
+zkop(6, 1, "Huidige medicatie (tabblad Rotatie, stap 1)")
+tabelkop(zs, 7, 2, ["Middel + toedieningsweg", "Dosis per 24 u", "Eenheid", "Soort", "OME (mg/24 u)"], 26)
+for i in range(R1 - R0 + 1):
+    r, rr = 8 + i, R0 + i
+    zs[f"B{r}"] = f'=IF(Rotatie!C{rr}="","",Rotatie!C{rr})'
+    zs[f"C{r}"] = f'=IF(Rotatie!C{rr}="","",Rotatie!D{rr})'
+    zs[f"D{r}"] = f'=IF(Rotatie!C{rr}="","",Rotatie!E{rr})'
+    zs[f"E{r}"] = f'=IF(Rotatie!C{rr}="","",Rotatie!B{rr})'
+    zs[f"F{r}"] = f'=IF(Rotatie!C{rr}="","",Rotatie!G{rr})'
+    for k in "BCDEF":
+        zs[f"{k}{r}"].font = f_norm
+        zs[f"{k}{r}"].border = rand_cel
+        zs[f"{k}{r}"].alignment = links if k == "B" else midden
+    zs[f"C{r}"].number_format = zs[f"F{r}"].number_format = "0.0##"
+    zs.row_dimensions[r].height = 20
+ZT = 8 + R1 - R0 + 1                        # 14
+zlabel(ZT, "Totaal OME (mg morfine oraal / 24 u)")
+zwaarde(f"C{ZT}", f"=Rotatie!G{TR}", "0.0", sterk=True)
+zlabel(ZT + 1, "Toe te passen %", "x")
+zs[f"E{ZT + 1}"] = '="Reden: "&Rotatie!D19&IF(N(Rotatie!D21)>0,", extra reductie "&FIXED(Rotatie!D21*100,0,TRUE)&"%","")&"  (tabblad Rotatie, stap 2)"'
+zwaarde(f"C{ZT + 1}", "=Rotatie!D23", "0%")
+zlabel(ZT + 2, "Toegepaste OME (mg/24 u)")
+zwaarde(f"C{ZT + 2}", f"=C{ZT}*C{ZT + 1}", "0.0", sterk=True)
+OME, OMET = f"$C${ZT}", f"$C${ZT + 2}"
+
+# 2. keuze
+Z2 = ZT + 4                                 # 18
+zkop(Z2, 2, "Omzetten naar")
+zlabel(Z2 + 1, "Nieuw middel + toedieningsweg", "Keuzelijst (tabblad Omrekenfactoren).")
+invoer(zs[f"C{Z2 + 1}"], "Fentanyl pleister")
+zs.merge_cells(f"C{Z2 + 1}:D{Z2 + 1}")
+dv_z = DataValidation(type="list", formula1=NAMES, allow_blank=True,
+                      error="Kies een middel uit de lijst (tabblad Omrekenfactoren).", showErrorMessage=True)
+zs.add_data_validation(dv_z)
+dv_z.add(f"C{Z2 + 1}")
+zlabel(Z2 + 2, "Aantal keer per dag (optioneel)", "Leeg = standaard uit tabblad Preparaten (bijv. MGA 2x per dag).")
+invoer(zs[f"C{Z2 + 2}"], None, "0")
+dv_f = DataValidation(type="whole", operator="between", formula1="1", formula2="6", allow_blank=True,
+                      error="Voer 1 tot 6 keer per dag in.", showErrorMessage=True)
+zs.add_data_validation(dv_f)
+dv_f.add(f"C{Z2 + 2}")
+DOEL, FREQ = f"$C${Z2 + 1}", f"$C${Z2 + 2}"
+# Verborgen volgnummers op Preparaten: de k-de regel voor het gekozen middel (zonder matrixformules)
+for kol, gebruik in (("L", O), ("M", B_)):
+    ps.column_dimensions[kol].hidden = True
+    for r in range(P0, P1 + 1):
+        ps[f"{kol}{r}"] = (f'=IF(AND($B{r}=Omzetten!{DOEL},$F{r}="{gebruik}"),'
+                           f'COUNTIFS($B${P0}:$B{r},Omzetten!{DOEL},$F${P0}:$F{r},"{gebruik}"),"")')
+FT = f"INDEX({FACT},MATCH({DOEL},{NAMES},0))"
+UT = f"INDEX({UNITS},MATCH({DOEL},{NAMES},0))"
+MAXT = f"INDEX({MAXD},MATCH({DOEL},{NAMES},0))"
+
+
+def dagdosis(ome):
+    return (f'=IF(OR({DOEL}="",N({ome})=0),"",IFERROR(IF({DOEL}="Methadon oraal",{methadon_dosis(ome)},'
+            f'{ome}/{FT}),""))')
+
+
+zlabel(Z2 + 3, "Equivalente dosis (100%)")
+zwaarde(f"C{Z2 + 3}", dagdosis(OME), "0.0#")
+zlabel(Z2 + 4, "Nieuwe dosis (toegepast %)")
+zwaarde(f"C{Z2 + 4}", dagdosis(OMET), "0.0#", sterk=True)
+for r in (Z2 + 3, Z2 + 4):
+    zs[f"D{r}"] = f'=IF({DOEL}="","",{UT})'
+    zs[f"D{r}"].font = f_klein
+    zs[f"D{r}"].alignment = links
+zs[f"E{Z2 + 4}"] = (f'=IF(AND(ISNUMBER(C{Z2 + 4}),{DOEL}<>""),IF(RIGHT({UT},4)="/uur","per uur (pleister/continu)",'
+                    f'"per 24 uur = "&{getal(f"C{Z2 + 4}/24")}&" "&LEFT({UT},2)&"/uur"),"")')
+zs[f"E{Z2 + 4}"].font = f_klein
+zs.merge_cells(f"E{Z2 + 4}:I{Z2 + 4}")
+DAG = f"$C${Z2 + 4}"
+
+
+def lijst(r0, n, gebruik):
+    """Regels van tabblad Preparaten voor het gekozen middel; verborgen kolom K = regelnummer."""
+    volg = prep_kol("L" if gebruik == O else "M")
+    for k in range(1, n + 1):
+        r = r0 + k - 1
+        zs[f"K{r}"] = f'=IFERROR(MATCH({k},{volg},0),"")'
+        zs[f"B{r}"] = f'=IF(K{r}="","",INDEX({PC},K{r}))'
+        zs[f"C{r}"] = f'=IF(K{r}="","",INDEX({PD},K{r}))'
+        zs[f"N{r}"] = f'=IF(K{r}="","",INDEX({PH},K{r}))'
+        for kol in "BCDEFGH":
+            zs[f"{kol}{r}"].font = f_norm
+            zs[f"{kol}{r}"].border = rand_cel
+            zs[f"{kol}{r}"].alignment = links if kol == "B" else midden
+        zs[f"C{r}"].number_format = "General"
+        zs[f"H{r}"].number_format = "+0%;-0%;0%"
+        zs.row_dimensions[r].height = 20
+
+
+def code(r, n):
+    return f'SUBSTITUTE(SUBSTITUTE(N{r},"{{f}}",D{r}),"{{n}}",{n})'
+
+
+# 3. onderhoud
+Z3 = Z2 + 6                                 # 24
+zkop(Z3, 3, "Advies onderhoud")
+zlabel(Z3 + 1, "Eén sterkte")
+zlabel(Z3 + 2, "Combinatie van twee sterktes")
+L0, LN = Z3 + 4, 10                         # lijst 28..37
+tabelkop(zs, Z3 + 3, 2, ["Preparaat", "Sterkte", "Keer per 24 u", "Per keer", "Doseercode", "Dosis", "Afwijking"], 26)
+lijst(L0, LN, O)
+for k in range(LN):
+    r = L0 + k
+    zs[f"D{r}"] = f'=IF(K{r}="","",IF(INDEX({PG},K{r})="",1,IF(N({FREQ})>0,{FREQ},INDEX({PG},K{r}))))'
+    zs[f"L{r}"] = f'=IF(OR(K{r}="",NOT(ISNUMBER({DAG}))),"",{DAG}/D{r})'          # doel per keer
+    zs[f"E{r}"] = f'=IF(L{r}="","",ROUND(L{r}/C{r},0))'
+    zs[f"F{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"te laag",{code(r, f"E{r}")}))'
+    zs[f"G{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"",E{r}*C{r}*D{r}))'
+    zs[f"H{r}"] = f'=IF(N(G{r})=0,"",G{r}/{DAG}-1)'
+    zs[f"M{r}"] = f'=IF(E{r}="","",IF(OR(E{r}<1,E{r}>4),"",ABS(H{r})+0.03*(E{r}-1)))'   # score: afwijking, weinig eenheden
+    zs[f"G{r}"].number_format = "0.0#"
+rng = lambda kol: f"${kol}${L0}:${kol}${L0 + LN - 1}"   # noqa: E731
+ZB = Z3 + 1                                 # beste regel (één sterkte)
+zs[f"K{ZB}"] = f'=IFERROR(MATCH(MIN({rng("M")}),{rng("M")},0),"")'
+zs[f"L{ZB}"] = f'=IF(K{ZB}="","",INDEX({rng("H")},K{ZB}))'
+zs[f"C{ZB}"] = (f'=IF({DOEL}="","",IF(N({OME})=0,"Vul eerst stap 1 in op tabblad Rotatie.",'
+                f'IF(COUNT({rng("C")})=0,"Geen preparaten voor dit middel op tabblad Preparaten.",'
+                f'IF(K{ZB}="","Dosis past niet bij de beschikbare sterktes - zie de tabel hieronder.",'
+                f'INDEX({rng("B")},K{ZB})&":  "&INDEX({rng("F")},K{ZB})&"   =  "&{getal(f"INDEX({rng("G")},K{ZB})")}&" "&{UT}'
+                f'&"  ("&{procent(f"L{ZB}")}&")"))))')
+# Combinatie: grootste sterkte <= dosis per keer (zelfde doseercode als de beste), aangevuld met de dichtstbijzijnde
+ZC = Z3 + 2
+P_, N_ = f"INDEX({rng('L')},$K${ZB})", f"INDEX({rng('N')},$K${ZB})"
+GROOTSTE = f'_xlfn.MAXIFS({rng("C")},{rng("C")},"<="&{P_}*1.0001,{rng("N")},{N_})'
+zs[f"K{ZC}"] = f'=IF($K${ZB}="","",IF({GROOTSTE}=0,"",{GROOTSTE}))'
+zs[f"L{ZC}"] = f'=IF(K{ZC}="","",INT({P_}/K{ZC}+0.000001))'                           # aantal grote
+zs[f"M{ZC}"] = f'=IF(K{ZC}="","",{P_}-L{ZC}*K{ZC})'                                    # rest per keer
+zs[f"N{ZC}"] = f'=IF(K{ZC}="","",MIN({rng("O")}))'
+for k in range(LN):   # afstand van elke sterkte (zelfde doseercode) tot de rest
+    r = L0 + k
+    zs[f"O{r}"] = f'=IF(OR($K${ZC}="",K{r}=""),"",IF(N{r}<>{N_},"",ABS(C{r}-$M${ZC})))'
+zs[f"O{ZC}"] = f'=IF(K{ZC}="","",IF(M{ZC}<=N{ZC},0,_xlfn.MINIFS({rng("C")},{rng("O")},N{ZC})))'   # aanvulling
+COMBI = f'(L{ZC}*K{ZC}+O{ZC})*INDEX({rng("D")},$K${ZB})'
+zs[f"Q{ZB}"] = f'=IF(K{ZB}="","",INDEX({rng("E")},K{ZB}))'                     # eenheden per keer (één sterkte)
+zs[f"Q{ZC}"] = f'=IF(K{ZC}="","",L{ZC}+IF(N(O{ZC})>0,1,0))'                     # eenheden per keer (combinatie)
+# Alleen tonen als de combinatie iets oplevert: andere dosis, of dezelfde dosis met minder eenheden
+zs[f"P{ZC}"] = (f'=IF(OR(K{ZC}="",N(O{ZC})=0,O{ZC}=K{ZC}),"",IF(AND(ABS({COMBI}-INDEX({rng("G")},$K${ZB}))<0.0001,'
+                f'Q{ZC}>=Q{ZB}),"",{COMBI}/{DAG}-1))')
+GROOT = f'INDEX({rng("B")},MATCH(K{ZC},{rng("C")},0))'
+KLEIN = f'INDEX({rng("B")},MATCH(O{ZC},{rng("C")},0))'
+CODE_G = (f'SUBSTITUTE(SUBSTITUTE({N_},"{{f}}",INDEX({rng("D")},$K${ZB})),"{{n}}",L{ZC})')
+CODE_K = (f'SUBSTITUTE(SUBSTITUTE({N_},"{{f}}",INDEX({rng("D")},$K${ZB})),"{{n}}",1)')
+zs[f"C{ZC}"] = (f'=IF(OR({DOEL}="",$K${ZB}=""),"",IF(P{ZC}="","Niet nodig - één sterkte past.",'
+                f'{GROOT}&":  "&{CODE_G}&"   +   "&{KLEIN}&":  "&{CODE_K}&"   =  "'
+                f'&{getal(f"(L{ZC}*K{ZC}+O{ZC})*INDEX({rng('D')},$K${ZB})")}&" "&{UT}&"  ("&{procent(f"P{ZC}")}&")"))')
+for r in (ZB, ZC):
+    zs.merge_cells(f"C{r}:I{r}")
+    zs[f"C{r}"].font = f_sterk
+    zs[f"C{r}"].fill = fill(LICHT)
+    zs[f"C{r}"].alignment = links
+    zs.row_dimensions[r].height = 26
+# Het advies met de kleinste afwijking groen
+COMBI_BETER = (f'IF(ISNUMBER($P${ZC}),IF(ISNUMBER($L${ZB}),OR(ABS($P${ZC})<ABS($L${ZB})-0.001,'
+               f'AND(ABS($P${ZC})<=ABS($L${ZB})+0.001,$Q${ZC}<$Q${ZB})),TRUE),FALSE)')
+zs.conditional_formatting.add(f"C{ZB}", FormulaRule(
+    formula=[f'AND(ISNUMBER($L${ZB}),NOT({COMBI_BETER}))'], font=Font(color=GROEN_D, bold=True), fill=cf_fill(GROEN_L)))
+zs.conditional_formatting.add(f"C{ZC}", FormulaRule(
+    formula=[COMBI_BETER], font=Font(color=GROEN_D, bold=True), fill=cf_fill(GROEN_L)))
+
+# 4. doorbraak
+Z4 = L0 + LN + 1                            # 39
+zkop(Z4, 4, "Doorbraakmedicatie")
+zlabel(Z4 + 1, "Doorbraakdosis per keer (als OME)", "Fractie van de dagdosis: tabblad Omrekenfactoren (KNMP 1/6), max. 4-6x per dag.")
+zwaarde(f"C{Z4 + 1}", f'=IF(N({OMET})=0,"",{OMET}*{S_BOLLO})', "0.0")
+zs[f"D{Z4 + 1}"] = "mg"
+zs[f"D{Z4 + 1}"].font = f_klein
+zlabel(Z4 + 2, "Advies doorbraak")
+B0, BN = Z4 + 4, 4                          # lijst 43..46
+tabelkop(zs, Z4 + 3, 2, ["Preparaat", "Sterkte", "Rekenen als", "Per keer", "Doseercode", "Dosis per keer", "Afwijking"], 26)
+lijst(B0, BN, B_)
+BTOME = f"$C${Z4 + 1}"
+for k in range(BN):
+    r = B0 + k
+    zs[f"D{r}"] = f'=IF(K{r}="","",INDEX({PI},K{r}))'
+    zs[f"L{r}"] = f'=IF(OR(K{r}="",N({BTOME})=0),"",IFERROR({BTOME}/INDEX({FACT},MATCH(D{r},{NAMES},0)),""))'
+    zs[f"E{r}"] = f'=IF(L{r}="","",ROUND(L{r}/C{r},0))'
+    zs[f"F{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"te laag",SUBSTITUTE(SUBSTITUTE(N{r},"{{n}}",E{r}),"{{m}}",6*E{r})))'
+    zs[f"G{r}"] = f'=IF(E{r}="","",IF(E{r}<1,"",E{r}*C{r}))'
+    zs[f"H{r}"] = f'=IF(N(G{r})=0,"",G{r}/L{r}-1)'
+    zs[f"M{r}"] = f'=IF(E{r}="","",IF(OR(E{r}<1,E{r}>2),"",ABS(H{r})+0.03*(E{r}-1)))'
+    zs[f"D{r}"].font = f_klein
+    zs[f"G{r}"].number_format = "0.0#"
+brng = lambda kol: f"${kol}${B0}:${kol}${B0 + BN - 1}"   # noqa: E731
+ZD = Z4 + 2
+zs[f"K{ZD}"] = f'=IFERROR(MATCH(MIN({brng("M")}),{brng("M")},0),"")'
+zs[f"C{ZD}"] = (f'=IF(OR({DOEL}="",N({OMET})=0),"",IF(COUNT({brng("C")})=0,"Geen doorbraakpreparaat voor dit middel op tabblad Preparaten.",'
+                f'IF(K{ZD}="","Doorbraakdosis lager dan de kleinste sterkte - zie de tabel hieronder.",'
+                f'INDEX({brng("B")},K{ZD})&":  "&INDEX({brng("F")},K{ZD})&"   =  "&{getal(f"INDEX({brng("G")},K{ZD})")}'
+                f'&" mg per keer  ("&{procent(f"INDEX({brng('H')},K{ZD})")}&")")))')
+zs.merge_cells(f"C{ZD}:I{ZD}")
+zs[f"C{ZD}"].font = Font(name=FS, size=10, color=GROEN_D)
+zs[f"C{ZD}"].fill = fill(GROEN_L)
+zs[f"C{ZD}"].alignment = links
+zs.row_dimensions[ZD].height = 26
+
+# 5. controles
+Z5 = B0 + BN + 1                            # 48
+zkop(Z5, 5, "Controles en waarschuwingen")
+zwarns = [
+    f'=IF(AND({DOEL}<>"",COUNTIF(Rotatie!C{R0}:C{R1},{DOEL})>0),"Het gekozen middel staat al in de huidige medicatie. '
+    f'Bedoel je een ander middel?","")',
+    f'=IF(AND(ISNUMBER({DAG}),ISNUMBER({MAXT})),IF({DAG}>{MAXT},"Nieuwe dosis boven de max. dagdosis ("&{MAXT}&" "&{UT}&").",""),"")',
+    f'=IF(NOT(ISNUMBER($L${ZB})),"",IF(ABS($L${ZB})<=0.1,"",IF(ISNUMBER($P${ZC}),IF(ABS($P${ZC})<=0.1,"",'
+    f'"Het advies wijkt meer dan 10% af van de berekende dosis - kies zelf een passende dosering."),'
+    f'"Het advies wijkt meer dan 10% af van de berekende dosis - kies zelf een passende dosering.")))',
+    f'=IF({DOEL}="Fentanyl pleister","Fentanylpleister: de werking begint pas na 12-24 uur. Bouw de vorige medicatie af '
+    f'volgens protocol, zorg voor doorbraakmedicatie en pas de dosis niet eerder aan dan na 3 dagen.","")',
+    f'=IF({DOEL}="Buprenorfine pleister","Buprenorfinepleister: partiële agonist, werking na 12-24 uur; boven 140 µg/uur '
+    f'niet geadviseerd. Plan de overgang in overleg.","")',
+    f'=IF({DOEL}="Methadon oraal","Methadon: alleen in overleg met een deskundige (niet-lineaire omrekening, lange en '
+    f'variabele halfwaardetijd, stapeling).","")',
+    f'=IF(OR({DOEL}="Fentanyl oromucosaal",{DOEL}="Fentanyl nasaal"),"Snelwerkend fentanyl is doorbraakmedicatie en wordt '
+    f'los getitreerd (start met de laagste sterkte), niet op basis van equivalentie.","")',
+    f'=IF(ISNUMBER(SEARCH("s.c./i.v.",{DOEL})),"Parenteraal: voor een morfinepomp zie tabblad Rotatie; anders de dosis per 24 uur '
+    f'verdelen of continu toedienen volgens protocol.","")',
+    f'=IF({OME}>={S_HIGH},"Hoge dosis (OME ≥ "&{S_HIGH}&" mg/24 u): de omrekening is onzekerder - overweeg extra reductie '
+    f'en overleg.","")',
+    '="Rekenhulp - vervangt geen klinisch oordeel, lokaal protocol of dubbele controle. Controleer het advies altijd."',
+]
+# Elke controle in een verborgen cel (kolom K); zichtbaar alleen de van toepassing zijnde, onder elkaar
+for i, f_ in enumerate(zwarns[:-1]):
+    zs[f"K{Z5 + 1 + i}"] = f_
+c = zs[f"B{Z5 + 1}"]
+WLIJST = f'_xlfn.TEXTJOIN(CHAR(10),TRUE,K{Z5 + 1}:K{Z5 + len(zwarns) - 1})'
+c.value = f'=IF({DOEL}="","",IF({WLIJST}="","Geen bijzonderheden.",{WLIJST}))'
+c.font = Font(name=F, size=10, color=ORANJE)
+c.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True, indent=1)
+zs.merge_cells(f"B{Z5 + 1}:I{Z5 + 1}")
+zs.row_dimensions[Z5 + 1].height = 96
+ZEIND = Z5 + 2
+zs[f"B{ZEIND}"] = zwarns[-1]
+zs[f"B{ZEIND}"].font = font(9, GRIJS, italic=True)
+zs.merge_cells(f"B{ZEIND}:I{ZEIND}")
+zs.print_area = f"A1:J{ZEIND}"
+zs.page_setup.orientation = "portrait"
+zs.page_setup.paperSize = zs.PAPERSIZE_A4
+zs.page_setup.fitToWidth = 1
+zs.page_setup.fitToHeight = 1
+zs.sheet_properties.pageSetUpPr.fitToPage = True
+zs.freeze_panes = "A5"
+
+# Volgorde tabbladen: Rotatie, Omzetten, Omrekenfactoren, Preparaten, Doseercodes, Omrekentabel, Toelichting
+wb._sheets = [ws, zs, fs, ps, ds, qs, ts]
 wb.active = 0
 
 # Samenvoegen wist de opmaak van de cellen achter de eerste cel; zet de vulling terug,

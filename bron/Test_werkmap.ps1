@@ -59,6 +59,20 @@ try {
     $Kol = 3; while ($Qs.Cells.Item(5, $Kol).Text -and $Qs.Cells.Item(5, $Kol).Text -ne 'Methadon oraal') { $Kol++ }
     "Omrekentabel methadon (OME -> mg): " + ((7..16 | ForEach-Object { $Qs.Cells.Item($_, 2).Text + '->' + $Qs.Cells.Item($_, $Kol).Text }) -join ', ')
     "Waarschuwingen: " + (($Ws.UsedRange.Cells | Where-Object { $_.Text -like 'Methadon:*' -or $_.Text -like 'Snelwerkend*' } | ForEach-Object { $_.Text.Substring(0, 40) }) -join ' | ')
+    "--- omzetten (oxycodon oraal 80 + 30 mg = 165 mg OME)"
+    $Ws.Range('B10:D15').ClearContents()
+    $Ws.Range('B10').Value2 = 'Onderhoud'; $Ws.Range('C10').Value2 = 'Oxycodon oraal'; $Ws.Range('D10').Value2 = '80'
+    $Ws.Range('B11').Value2 = 'Doorbraak'; $Ws.Range('C11').Value2 = 'Oxycodon oraal'; $Ws.Range('D11').Value2 = '30'
+    $Ws.Range('D19').Value2 = 'Onvoldoende pijnstilling'
+    $Zs = $Wb.Worksheets.Item('Omzetten')
+    foreach ($Doel in 'Fentanyl pleister', 'Morfine oraal', 'Hydromorfon oraal', 'Buprenorfine pleister', 'Tapentadol oraal', 'Methadon oraal', 'Fentanyl nasaal', 'Piritramide s.c./i.v.') {
+        $Zs.Range('C19').Value2 = [string]$Doel; $X.Calculate()
+        "{0}: {1} {2}`n  1 sterkte : {3}`n  combinatie: {4}`n  doorbraak : {5}`n  groen     : {6}" -f $Doel, $Zs.Range('C22').Text, $Zs.Range('D22').Text, $Zs.Range('C25').Text, $Zs.Range('C26').Text, $Zs.Range('C41').Text, $(if ($Zs.Range('C26').DisplayFormat.Font.Bold) { 'combinatie' } elseif ($Zs.Range('C25').DisplayFormat.Font.Bold) { '1 sterkte' } else { '-' })
+        $W = 49..58 | ForEach-Object { $Zs.Range("B$_").Text } | Where-Object { $_ -and $_ -notlike 'Rekenhulp*' }
+        if ($W) { "  waarschuwing: " + ($W -join ' | ') }
+    }
+    $Zs.Range('C19').Value2 = 'Oxycodon oraal'; $Zs.Range('C20').Value2 = '3'; $Ws.Range('C10').Value2 = 'Morfine oraal'; $Ws.Range('D10').Value2 = '45'; $Ws.Range('B11:D11').ClearContents(); $X.Calculate()
+    "Morfine 45 mg -> oxycodon 3x per dag: " + $Zs.Range('C25').Text + "  |  " + $Zs.Range('C26').Text
     $Wb.Close($false)
 } finally {
     $X.Quit()

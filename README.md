@@ -25,6 +25,11 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
 - **Stap 5 – controles:** alleen de waarschuwingen die van toepassing zijn, bijv. fentanylpleister
   (afgifte 12-24 uur na verwijderen), methadon (dosisafhankelijk, altijd overleg), snelwerkend fentanyl (indicatief), eGFR < 30, hoge dosis, afronding
   te grof (stelt de andere concentratie voor) of spuit binnen 24 uur leeg.
+- **Omzetten naar een ander opioïd** (tabblad *Omzetten*): kies bijvoorbeeld *Fentanyl pleister* of
+  *Oxycodon oraal*; de rekenhulp neemt de OME en het percentage uit stap 1 en 2 over, rekent de nieuwe
+  dosis uit en geeft het best passende preparaat (één sterkte of een combinatie van twee) met
+  doseercode, bijv. *Oxycodon tablet MGA 10 mg: 3.1T*, plus doorbraakmedicatie (1/6 van de dagdosis).
+  Het assortiment staat op tabblad *Preparaten* en is aan te passen aan de eigen voorraad.
 - **Uitlezen uit Pharmacom** (optioneel): sneltoets **Ctrl+Alt+F3** vult stap 1 vanuit de
   medicatiestatus (F3) van het open dossier.
 
