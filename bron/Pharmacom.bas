@@ -160,7 +160,7 @@ Volgende:
     Aantal = r - R_EERST
     Dim Samenvatting As String
     Samenvatting = Aantal & T(" opio{i}dregel(s) ingevuld uit ") & Titel & "."
-    If Aantal > 0 Then Samenvatting = Samenvatting & vbLf & "Controleer kolom I (oranje = nakijken / aanvullen)."
+    If Aantal > 0 Then Samenvatting = Samenvatting & vbLf & "Controleer de kolom 'Uitgelezen uit Pharmacom' (oranje = nakijken / aanvullen)."
     If NietIngevuld <> "" Then Samenvatting = Samenvatting & vbLf & vbLf & "Niet automatisch ingevuld (zelf beoordelen):" & NietIngevuld
     If Overgeslagen <> "" Then Samenvatting = Samenvatting & vbLf & vbLf & "Overgeslagen:" & Overgeslagen
     If Aantal = 0 And NietIngevuld = "" Then Samenvatting = T("Geen opio{i}den gevonden in de medicatiestatus van ") & Titel & "."
