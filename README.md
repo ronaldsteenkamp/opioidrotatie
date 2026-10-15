@@ -31,7 +31,7 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
 ## Installeren
 
 1. Download `Opioidrotatie-<versie>.zip` bij de nieuwste [release](../../releases/latest).
-2. Klik met rechts op de zip → **Eigenschappen** → vink **Deblokkeren** aan → OK. (Anders blokkeert
+2. Klik met rechts op de zip → **Eigenschappen** → vink **Blokkering opheffen** aan → OK. (Anders blokkeert
    Excel de macro's in een bestand van internet.) Pak de zip uit.
 3. Klik met rechts op `Installeer.ps1` → **Uitvoeren met PowerShell**. De rekenhulp komt in
    `Downloads\Opioidrotatie`, met op het bureaublad de snelkoppelingen **Opioidrotatie morfinepomp**
