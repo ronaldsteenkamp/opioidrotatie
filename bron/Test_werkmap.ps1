@@ -42,6 +42,23 @@ try {
         if ($Ws.Range("C$R").Text) { "rij {0}: {1} | {2} | {3} {4} | OME {5} | oranje={6}`n        {7}" -f $R, $Ws.Range("B$R").Text, $Ws.Range("C$R").Text, $Ws.Range("D$R").Text, $Ws.Range("E$R").Text, $Ws.Range("G$R").Text, ($Ws.Range("I$R").Interior.Color -eq 15069695), $Ws.Range("I$R").Text }
     }
     "Totaal OME: " + $Ws.Range('G16').Text + "  |  tegels: " + $Ws.Range('B33').Text + " / " + $Ws.Range('D33').Text + " / " + $Ws.Range('G33').Text + " / " + $Ws.Range('I33').Text
+    "--- verwerken: methadon (staffel) en snelwerkend fentanyl"
+    $Nep2 = "OK`tPharmacom - Dossier - FICTIEVE TESTPATIENT 2`n" +
+        "Srt`tEtiketnaam`tAfl. Hoev.`tDosering`tTh. einddatum`tActief`tStartdatum`tATC`n" +
+        "G`tMETHADON HCL TABLET 5MG`t30 ST`t2.2T`t`t`t01-10-2026`tN07BC02`n" +
+        "G`tABSTRAL SUBLINGUALE TABLET 100MICROGRAM`t10 ST`tP1TM4`t`t`t01-10-2026`tN02AB03`n" +
+        "G`tFENTANYL NEUSSPRAY 100UG/DO`t1 ST`tFENTN`t`t`t01-10-2026`tN02AB03`n"
+    $X.Run($M + 'Verwerk', $Nep2, $true)
+    $X.CalculateFull()
+    foreach ($R in 10..15) {
+        if ($Ws.Range("C$R").Text) { "rij {0}: {1} | {2} | {3} {4} | factor {5} | OME {6} | {7} | oranje={8}" -f $R, $Ws.Range("B$R").Text, $Ws.Range("C$R").Text, $Ws.Range("D$R").Text, $Ws.Range("E$R").Text, $Ws.Range("F$R").Text, $Ws.Range("G$R").Text, $Ws.Range("H$R").Text, ($Ws.Range("I$R").Interior.Color -eq 15069695) }
+    }
+    "methadonfactor bij 20 / 21 / 50 / 51 mg:"
+    foreach ($Dos in 20, 21, 50, 51) { $Ws.Range('C15').Value2 = 'Methadon oraal'; $Ws.Range('D15').Value2 = $Dos; $X.Calculate(); "  {0} mg -> factor {1}, OME {2}" -f $Dos, $Ws.Range('F15').Text, $Ws.Range('G15').Text }
+    $Qs = $Wb.Worksheets.Item('Omrekentabel')
+    $Kol = 3; while ($Qs.Cells.Item(5, $Kol).Text -and $Qs.Cells.Item(5, $Kol).Text -ne 'Methadon oraal') { $Kol++ }
+    "Omrekentabel methadon (OME -> mg): " + ((7..16 | ForEach-Object { $Qs.Cells.Item($_, 2).Text + '->' + $Qs.Cells.Item($_, $Kol).Text }) -join ', ')
+    "Waarschuwingen: " + (($Ws.UsedRange.Cells | Where-Object { $_.Text -like 'Methadon:*' -or $_.Text -like 'Snelwerkend*' } | ForEach-Object { $_.Text.Substring(0, 40) }) -join ' | ')
     $Wb.Close($false)
 } finally {
     $X.Quit()

@@ -23,7 +23,7 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
 - **Stap 4 – resultaat:** pompstand, dagdosis morfine s.c./i.v., doorbraakbolus (1/6 dagdosis, KNMP)
   en looptijd, met de berekening in detail en de pompstand bij de andere concentratie.
 - **Stap 5 – controles:** alleen de waarschuwingen die van toepassing zijn, bijv. fentanylpleister
-  (afgifte 12-24 uur na verwijderen), methadon (niet automatisch), eGFR < 30, hoge dosis, afronding
+  (afgifte 12-24 uur na verwijderen), methadon (dosisafhankelijk, altijd overleg), snelwerkend fentanyl (indicatief), eGFR < 30, hoge dosis, afronding
   te grof (stelt de andere concentratie voor) of spuit binnen 24 uur leeg.
 - **Uitlezen uit Pharmacom** (optioneel): sneltoets **Ctrl+Alt+F3** vult stap 1 vanuit de
   medicatiestatus (F3) van het open dossier.
@@ -78,8 +78,8 @@ Nodig: Windows 10/11 en Excel (Microsoft 365 / 2019 of nieuwer). Voor het uitlez
   en drank per ml) en de **doseercode** volgens de systematiek van de Centrale doseertabel
   (frequentie – tijdsaanduiding – hoeveelheid – toedieningsvorm, `M` + getal = niet meer dan).
   Codes die niet herkend worden, kun je toevoegen op het tabblad **Doseercodes**.
-- Niet automatisch: fentanyl neusspray/zuigtablet, buprenorfine sublinguaal (geen KNMP-factor) en
-  methadon (altijd overleg).
+- Niet automatisch: buprenorfine sublinguaal (geen KNMP-factor). Methadon en fentanyl
+  oromucosaal/nasaal worden wel ingevuld, altijd oranje (nakijken).
 
 ## Omrekenfactoren
 
@@ -96,7 +96,13 @@ zijn aan te passen aan het lokale protocol.
 | Buprenorfine pleister | 100 : 1 | 25 µg/uur |
 | Tramadol / tapentadol | 1 : 5 / 1 : 2,5 | 300 mg / 150 mg |
 | Fentanyl s.c./i.v. | parenteraal morfine : fentanyl = 100 : 1 (beperkte gegevens) | – |
-| Methadon | variabel 5 : 1 tot 10 : 1 | niet automatisch |
+| Fentanyl oromucosaal (zuig-/buccaal-/sublinguaaltablet) ¹ | 200 µg = 10 mg morfine oraal (indicatief) | 1200 µg/24 u |
+| Fentanyl nasaal ¹ | 100 µg = 30 mg morfine oraal (indicatief) | 200 µg/24 u |
+| Methadon oraal ¹ | 10 mg methadon = 40 mg (0-20 mg/24 u), 60 mg (21-50 mg) of 80 mg (> 50 mg) morfine oraal; KNMP: variabel 5 : 1 tot 10 : 1 | 15 mg (altijd overleg) |
+
+¹ Niet uit de KNMP-rotatietabel, maar uit de [Equivalentietabel opioïden van het Zaans Medisch Centrum](https://www.zaansmedischcentrum.nl/default/assets/File/Equivalentietabel.pdf)
+(2020; bronnen: Pallialine voor methadon, *Perioperative Medicine for the Junior Clinician* voor oromucosaal en het
+EPAR van Instanyl voor nasaal). De methadonfactor is niet lineair; de staffel staat op het tabblad **Omrekenfactoren**.
 
 Rotatie wegens bijwerkingen: start met 75% van de equivalente dosis; wegens onvoldoende effect:
 equivalente dosis. Doorbraak: 1/6 van de dagdosis, max. 4-6× per dag.

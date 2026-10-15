@@ -16,7 +16,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "Opioidrotatie_basis.xlsx"
-VERSIE = "Versie 1.4 - 14-10-2026"
+VERSIE = "Versie 1.5 - 15-10-2026"
 
 # ------------------------------------------------------------------ huisstijl
 BLAUW = "002664"        # BENU royal blue
@@ -172,6 +172,7 @@ tabelkop(fs, 16, 2, ["Middel en toedieningsweg", "Eenheid invoer", "Equianalgeti
 KNMP = "KNMP IM Analgetica (G806), Opioïdrotatie - conversiefactoren en rotatietabel (bron: NVA-richtlijn Pijn bij kanker)"
 KNMPT = "KNMP IM Analgetica (G806), opioïdrotatietabel"
 OTH = "Niet in KNMP-rotatietabel; gangbare literatuurwaarde"
+ZMC = "Equivalentietabel opioïden, Zaans Medisch Centrum (2020)"
 drugs = [
     ("Morfine oraal", "mg/24 u", "Referentie", 1, None, KNMP, ""),
     ("Morfine s.c./i.v.", "mg/24 u", "Morfine oraal : s.c./i.v. = 3 : 1 (zie instelling)", f"={S_RATIO}", None, KNMPT,
@@ -190,6 +191,13 @@ drugs = [
      "KNMP IM Analgetica (G806): 'in een aantal bronnen 100:1 (beperkte gegevens)'",
      "µg/uur x 24 / 1000 x 100 x 3. LET OP: in de praktijk wordt ook 1:1 met de pleister (factor 2,4) gehanteerd; "
      "dat geeft een 3x lagere morfinedosis. Altijd overleg."),
+    ("Fentanyl oromucosaal", "µg/24 u", "200 µg fentanyl oromucosaal/buccaal = 10 mg morfine oraal", 0.05, None,
+     f"{ZMC}; bron: Perioperative Medicine for the Junior Clinician (Wiley, 2015)",
+     "Zuig-, buccaal- of sublinguaaltablet (Actiq, Abstral, Effentora, Breakyl): totaal µg in 24 u x 0,05. "
+     "Snelwerkend fentanyl wordt normaal los getitreerd; omrekening indicatief."),
+    ("Fentanyl nasaal", "µg/24 u", "100 µg fentanyl nasaal = 30 mg morfine oraal", 0.3, None,
+     f"{ZMC}; bron: EMA EPAR Instanyl (farmacokinetiek)",
+     "Neusspray (Instanyl, PecFent): totaal µg in 24 u x 0,3. Omrekening indicatief."),
     ("Buprenorfine pleister", "µg/uur", "Morfine oraal : buprenorfine TD = 100 : 1", 2.4, 140, KNMP,
      "KNMP-tabel: 52,5 µg/uur = 120 mg morfine oraal. Boven 140 µg/uur niet geadviseerd (NVA)."),
     ("Tramadol oraal", "mg/24 u", "Morfine oraal : tramadol = 1 : 5 (KNMP-tabel)", 0.2, 400, KNMPT,
@@ -201,8 +209,10 @@ drugs = [
      "Gerekend met 20 : 10 (voorzichtige kant bij rotatie naar morfine). Bij 15 : 10 wordt de factor 2,0."),
     ("Codeïne oraal", "mg/24 u", "Morfine oraal : codeïne = 1 : 10", 0.1, 240, OTH,
      "Niet in KNMP-rotatietabel; NHG raadt codeïne af als pijnstiller. Verifiëren."),
-    ("Methadon oraal", "mg/24 u", "Variabel, 5 : 1 tot 10 : 1 (dosisafhankelijk)", None, None, KNMP,
-     "GEEN automatische omrekening: altijd overleg met deskundige (consultatieteam palliatieve zorg / pijnteam)."),
+    ("Methadon oraal", "mg/24 u", "Dosisafhankelijk: 10 mg methadon = 40 / 60 / 80 mg morfine oraal", None, None,
+     f"{ZMC}; bron: Pallialine, Opioïden. (KNMP: variabel 5 : 1 tot 10 : 1)",
+     "Factor volgens de staffel hieronder (niet lineair). Altijd overleg met een deskundige "
+     "(consultatieteam palliatieve zorg / pijnteam)."),
 ]
 D0 = 17
 for i, row in enumerate(drugs):
@@ -231,6 +241,40 @@ NAMES = f"Omrekenfactoren!$B${D0}:$B${D1}"
 UNITS = f"Omrekenfactoren!$C${D0}:$C${D1}"
 FACT = f"Omrekenfactoren!$E${D0}:$E${D1}"
 MAXD = f"Omrekenfactoren!$F${D0}:$F${D1}"
+
+# Methadon: factor hangt af van de methadondosis (staffel, niet lineair)
+M0 = D1 + 3
+fs[f"B{M0 - 1}"] = "Methadon oraal - dosisafhankelijke factor"
+fs[f"B{M0 - 1}"].font = Font(name=FS, size=13, color=BLAUW)
+fs.row_dimensions[M0 - 1].height = 24
+tabelkop(fs, M0, 2, ["Methadon (mg/24 u)", "Tot en met (mg/24 u)", "10 mg methadon =", "Factor → OME", "", "Bron"], 30)
+staffel = [("0-20 mg", 20, "40 mg morfine oraal", 4), ("21-50 mg", 50, "60 mg morfine oraal", 6),
+           ("> 50 mg", None, "80 mg morfine oraal", 8)]
+for i, (lab, tm, eq, f) in enumerate(staffel):
+    r = M0 + 1 + i
+    for j, v in enumerate((lab, tm, eq, f, None, f"{ZMC}; bron: Pallialine, Opioïden")):
+        c = fs.cell(row=r, column=2 + j, value=v)
+        c.font = f_norm
+        c.alignment = links
+        c.border = rand_cel
+    fs.cell(row=r, column=2).font = f_sterk
+    fs.cell(row=r, column=7).font = f_klein
+    if tm is not None:
+        invoer(fs.cell(row=r, column=3), tm, "0")
+    invoer(fs.cell(row=r, column=5), f, "0.0#")
+    fs.row_dimensions[r].height = 22
+fs[f"B{M0 + 4}"] = ("Omrekenfactor niet lineair: bij een methadondosis rond een grens verandert de OME sprongsgewijs. "
+                    "Altijd overleg met een deskundige.")
+fs[f"B{M0 + 4}"].font = f_klein
+fs.merge_cells(f"B{M0 + 4}:H{M0 + 4}")
+M_TM1, M_TM2 = f"Omrekenfactoren!$C${M0 + 1}", f"Omrekenfactoren!$C${M0 + 2}"
+M_F1, M_F2, M_F3 = (f"Omrekenfactoren!$E${M0 + 1 + i}" for i in range(3))
+
+
+def methadon_factor(d):
+    """Excel-formule (zonder '=') voor de methadonfactor bij dosis d (mg/24 u)."""
+    return f"IF({d}<={M_TM1},{M_F1},IF({d}<={M_TM2},{M_F2},{M_F3}))"
+
 fs.freeze_panes = "A4"
 fs.page_setup.orientation = "landscape"
 fs.page_setup.fitToWidth = 1
@@ -342,14 +386,18 @@ for r in range(R0, R1 + 1):
     dv_num.add(f"D{r}")
     berekend(f"E{r}", f'=IF(C{r}="","",INDEX({UNITS},MATCH(C{r},{NAMES},0)))', "@")
     ws[f"E{r}"].alignment = midden
-    berekend(f"F{r}", f'=IF(C{r}="","",IF(INDEX({FACT},MATCH(C{r},{NAMES},0))="","n.v.t.",'
-                      f'INDEX({FACT},MATCH(C{r},{NAMES},0))))', "0.0##")
+    berekend(f"F{r}", f'=IF(C{r}="","",IF(C{r}="Methadon oraal",IF(D{r}="","",{methadon_factor(f"D{r}")}),'
+                      f'IF(INDEX({FACT},MATCH(C{r},{NAMES},0))="","n.v.t.",INDEX({FACT},MATCH(C{r},{NAMES},0)))))',
+             "0.0##")
     berekend(f"G{r}", f'=IF(OR(C{r}="",D{r}=""),"",IF(ISNUMBER(F{r}),D{r}*F{r},"overleg"))', "0.0", sterk=True)
     c = ws[f"H{r}"]
     c.value = (f'=IF(OR(C{r}="",D{r}=""),"",IF(NOT(ISNUMBER(F{r})),"Geen omrekening - overleg deskundige",'
+               f'IF(C{r}="Methadon oraal","Dosisafhankelijke factor - overleg",'
+               f'IF(C{r}="Fentanyl oromucosaal","Indicatieve factor - controleer",'
+               f'IF(C{r}="Fentanyl nasaal","Indicatieve factor - controleer",'
                f'IF(AND(ISNUMBER(INDEX({MAXD},MATCH(C{r},{NAMES},0))),'
                f'D{r}>INDEX({MAXD},MATCH(C{r},{NAMES},0))),'
-               f'"Boven max. dagdosis ("&INDEX({MAXD},MATCH(C{r},{NAMES},0))&")","✓ OK")))')
+               f'"Boven max. dagdosis ("&INDEX({MAXD},MATCH(C{r},{NAMES},0))&")","✓ OK"))))))')
     c.font = font(9, GROEN_D, name=FS)
     c.fill = fill(LICHT)
     c.alignment = links
@@ -545,7 +593,11 @@ stap(CW, 5, "Controles en waarschuwingen",
 ws[f"C{CW + 1}"].font = font(8.5, BLAUW_M, italic=True)
 L = f"C{R0}:C{R1}"
 warns = [
-    f'=IF(COUNTIF({L},"Methadon*")>0,"Methadon wordt niet meegerekend - omrekening is dosisafhankelijk. Overleg altijd met een deskundige.","")',
+    f'=IF(COUNTIF({L},"Methadon*")>0,"Methadon: meegerekend met een dosisafhankelijke factor (10 mg = 40/60/80 mg morfine oraal; '
+    f'tabblad Omrekenfactoren). Niet lineair, lange en variabele halfwaardetijd: overleg altijd met een deskundige.","")',
+    f'=IF(COUNTIF({L},"Fentanyl oromucosaal")+COUNTIF({L},"Fentanyl nasaal")>0,"Snelwerkend fentanyl (oromucosaal/nasaal): '
+    f'de omrekenfactor is indicatief (geen vaste equivalentie; wordt normaal los getitreerd). Vul het werkelijke gebruik in µg/24 u in '
+    f'en controleer de uitkomst.","")',
     f'=IF(COUNTIF({L},"Fentanyl pleister")>0,"Fentanylpleister: na verwijderen wordt nog 12-24 uur fentanyl afgegeven. Start de pomp in overleg (bijv. ca. 12 uur na verwijderen of met een lagere startdosis) en zorg voor doorbraakmedicatie.","")',
     f'=IF(COUNTIF({L},"Fentanyl s.c./i.v. continu")>0,"Fentanyl s.c./i.v.: de KNMP-factor parenteraal morfine : fentanyl 100 : 1 berust op beperkte gegevens. Bij 1 : 1 met de pleister zou de morfinedosis 3x lager uitkomen. Altijd overleg.","")',
     f'=IF(COUNTIF({L},"Buprenorfine pleister")>0,"Buprenorfinepleister: partiële agonist met lange werkingsduur. Plan de overgang naar morfine in overleg.","")',
@@ -611,7 +663,7 @@ ws.oddFooter.right.size = 8
 
 # ================================================================== Omrekentabel
 qs = wb.create_sheet("Omrekentabel")
-cols = [n for n, *_ in drugs if n != "Methadon oraal"]
+cols = [n for n, *_ in drugs]
 extra = ["Morfine pomp mg/uur", "Morfine pomp ml/uur"]
 laatste = chr(ord("B") + len(cols) + len(extra))
 kopbalk(qs, "Snelle omrekentabel", "Equianalgetisch, zonder reductie. Bij rotatie wegens bijwerkingen: 75% van deze waarden. "
@@ -637,7 +689,13 @@ for i, ome in enumerate([30, 60, 90, 120, 180, 240, 300, 360, 480, 600]):
     band = fill(GRIJS_L) if i % 2 else fill(WIT)
     invoer(qs.cell(row=r, column=2), ome)
     for j, n in enumerate(cols):
-        c = qs.cell(row=r, column=3 + j, value=f'=$B{r}/INDEX({FACT},MATCH("{n}",{NAMES},0))')
+        if n == "Methadon oraal":
+            # Staffel omgekeerd; tussen twee stappen de lagere methadondosis (voorzichtige kant)
+            v = (f"=IF($B{r}<={M_TM1}*{M_F1},$B{r}/{M_F1},IF($B{r}<={M_TM2}*{M_F2},MAX({M_TM1},$B{r}/{M_F2}),"
+                 f"MAX({M_TM2},$B{r}/{M_F3})))")
+        else:
+            v = f'=$B{r}/INDEX({FACT},MATCH("{n}",{NAMES},0))'
+        c = qs.cell(row=r, column=3 + j, value=v)
         c.number_format = "0.0"
         c.font = f_waarde
         c.fill = band
@@ -655,6 +713,9 @@ for i, ome in enumerate([30, 60, 90, 120, 180, 240, 300, 360, 480, 600]):
     qs.row_dimensions[r].height = 20
 qs["B18"] = "Witte OME-waarden in kolom B zijn aanpasbaar."
 qs["B18"].font = f_klein
+qs["B19"] = ("Methadon: dosisafhankelijke staffel (tabblad Omrekenfactoren); valt de OME tussen twee stappen, dan staat "
+             "hier de lagere methadondosis. Fentanyl oromucosaal/nasaal: indicatief. Altijd overleg.")
+qs["B19"].font = f_klein
 qs.freeze_panes = "C7"
 qs.sheet_properties.tabColor = BLAUW_M
 qs.page_setup.orientation = "landscape"
@@ -726,7 +787,7 @@ lines = [
          "etiketnaam en vertaalt de doseercode. De kolom 'Uitgelezen uit Pharmacom' laat per regel zien wat er gelezen en hoe het vertaald is."),
     ("", "Zo nodig / bij pijn: wordt als 'Doorbraak' gezet met het MAXIMUM per 24 u uit de doseercode (bijv. P1CM6 = max. 6 per dag). "
          "Verlaag dit naar het werkelijke gebruik als dat minder is; staat er geen maximum in de code, dan blijft de dosis leeg. "
-         "Oranje = controleren. Niet automatisch: fentanyl neusspray/zuigtablet, buprenorfine sublinguaal, onbekende codes."),
+         "Oranje = controleren. Niet automatisch: buprenorfine sublinguaal, onbekende codes."),
     ("", "Bovenaan staat welk dossier is uitgelezen - controleer of dit de juiste patiënt is. Pharmacom_naar_Excel.ps1 en "
          "Pharmacom_medicatiestatus.ps1 moeten in dezelfde map staan als deze werkmap."),
     ("", ""),
@@ -750,6 +811,10 @@ lines = [
          "Pallialine-pijnkaart - doorbraak 10-15% (lagere variant)."),
     ("", "• Doseercodes: Centrale doseertabel, Opbouw doseercodes (Health Base, helpkaart Pharmacom/Medicom)."),
     ("", "• Codeïne staat niet in de KNMP-rotatietabel (literatuurwaarde 1 : 10)."),
+    ("", "• Methadon (dosisafhankelijk: 10 mg = 40 mg morfine oraal bij 0-20 mg/24 u, 60 mg bij 21-50 mg, 80 mg bij > 50 mg) en "
+         "fentanyl oromucosaal (200 µg = 10 mg) en nasaal (100 µg = 30 mg): Equivalentietabel opioïden, Zaans Medisch Centrum "
+         "(2020), met als bronnen Pallialine (methadon), Perioperative Medicine for the Junior Clinician (oromucosaal) en het "
+         "EPAR van Instanyl (nasaal). KNMP noemt voor methadon alleen 'variabel 5 : 1 tot 10 : 1'."),
     ("", ""),
     (H, "Verantwoording"),
     ("", "Equianalgetische tabellen zijn benaderingen met beperkt wetenschappelijk bewijs; incomplete kruistolerantie, nier- en leverfunctie, "

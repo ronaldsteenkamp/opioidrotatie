@@ -256,6 +256,15 @@ Private Function VulRegel(ws As Worksheet, ByVal r As Long, ByVal Stof As String
             Dosis = Dosis / 24
             Uitleg = Uitleg & T(" = ") & Getal(Dosis) & T(" {mu}g/uur")
         End If
+        ' Snelwerkend fentanyl (oromucosaal/nasaal) rekent in ug/24 u; factor indicatief
+        If Middel = "Fentanyl oromucosaal" Or Middel = "Fentanyl nasaal" Then
+            LetOp = True
+            If Not IsEmpty(Dosis) And S.Eenheid = "MG" Then
+                Dosis = Dosis * 1000
+                Uitleg = Uitleg & T(" = ") & Getal(Dosis) & T(" {mu}g/24 u")
+            End If
+        End If
+        If Middel = "Methadon oraal" Then LetOp = True
     End If
 
     ws.Cells(r, "B").Value = Soort
@@ -315,7 +324,7 @@ Private Function Zoekwoord(ByVal Stof As String) As String
     End Select
 End Function
 
-' oraal, parenteraal, pleister, transmucosaal of rectaal (uit de etiketnaam)
+' oraal, parenteraal, pleister, nasaal, transmucosaal of rectaal (uit de etiketnaam)
 Private Function Toedieningsweg(ByVal Naam As String) As String
     Dim N As String
     N = " " & UCase$(Naam) & " "
@@ -323,7 +332,10 @@ Private Function Toedieningsweg(ByVal Naam As String) As String
         Toedieningsweg = "pleister"
     ElseIf BevatEen(N, Array("INJ", "INF", "AMPUL", "CASSETTE", " IV ", " SC ")) Then
         Toedieningsweg = "parenteraal"
-    ElseIf BevatEen(N, Array("NEUS", "SPRAY", "ZUIGT", "SUBL", "BUCC", "FILM", "OROMUC", "SMELT", "LOLLY")) Then
+    ElseIf BevatEen(N, Array("NEUS", "NASAL", "INSTANYL", "PECFENT")) Then
+        Toedieningsweg = "nasaal"
+    ElseIf BevatEen(N, Array("SPRAY", "ZUIGT", "SUBL", "BUCC", "FILM", "OROMUC", "SMELT", "LOLLY", _
+                             "ACTIQ", "ABSTRAL", "EFFENTORA", "BREAKYL")) Then
         Toedieningsweg = "transmucosaal"
     ElseIf BevatEen(N, Array("ZETPIL", "SUPP", "RECT")) Then
         Toedieningsweg = "rectaal"
@@ -344,6 +356,8 @@ Private Function TabelNaam(ByVal Stof As String, ByVal Weg As String) As String
         Case "Fentanyl"
             If Weg = "pleister" Then TabelNaam = "Fentanyl pleister"
             If Par Then TabelNaam = "Fentanyl s.c./i.v. continu"
+            If Weg = "transmucosaal" Then TabelNaam = "Fentanyl oromucosaal"
+            If Weg = "nasaal" Then TabelNaam = "Fentanyl nasaal"
         Case "Buprenorfine"
             If Weg = "pleister" Then TabelNaam = "Buprenorfine pleister"
         Case "Tramadol", "Tapentadol", "Methadon"
