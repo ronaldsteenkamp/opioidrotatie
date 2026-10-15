@@ -43,7 +43,7 @@ controleer altijd (zie [Verantwoording](#verantwoording)).
    `Downloads\Opioidrotatie`, met op het bureaublad de snelkoppelingen **Opioidrotatie morfinepomp**
    en **Lees opioiden uit Pharmacom** (sneltoets Ctrl+Alt+F3). De installatie controleert ook of de
    **Java Access Bridge** (koppeling met Pharmacom) aanstaat en zet hem zo nodig aan; meldt hij dat
-   Pharmacom opnieuw gestart moet worden, sluit Pharmacom dan en open het opnieuw.
+   Pharmacom opnieuw gestart moet worden, sluit Pharmacom dan af en open het opnieuw.
 4. Open de werkmap en klik eenmalig op **Inhoud inschakelen**.
 
 Open de werkmap niet vanaf een netwerkschijf: daar blokkeert Excel de macro's vaak. Zonder macro's
